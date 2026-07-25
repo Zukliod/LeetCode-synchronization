@@ -43,11 +43,11 @@ jobs:
           
       - name: Update Resume Projects
         run: |
-          python update_resume_projects.py
+          python scripts/update_resume_projects.py
 
       - name: Update Resume & Publish LinkedIn
         run: |
-          python update_linkedin.py    
+          python scripts/update_linkedin.py    
 
       - name: Verify Python
         run: |
