@@ -3,7 +3,10 @@ import re
 import requests
 
 GITHUB_USERNAME = "zukliod"
-RESUME_PATH = "resume.md"
+
+# Automatically resolve path to resume.md in the same folder as this script
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+RESUME_PATH = os.path.join(SCRIPT_DIR, "resume.md")
 
 def fetch_top_repos():
     url = f"https://api.github.com/users/{GITHUB_USERNAME}/repos?per_page=100&sort=updated"
@@ -22,7 +25,6 @@ def fetch_top_repos():
     scored_repos = []
 
     for repo in repos:
-        # Exclude forks, archived, or profile repos
         if repo.get("fork") or repo.get("archived") or repo["name"].lower() == GITHUB_USERNAME.lower():
             continue
         
@@ -53,13 +55,11 @@ def fetch_top_repos():
             "score": score
         })
 
-    # Sort descending by score and select top 3
     scored_repos.sort(key=lambda x: x["score"], reverse=True)
     return scored_repos[:3]
 
 def generate_markdown(projects):
     if not projects:
-        # Fallback default projects if API is unreachable
         return """**KESCO Substation Information System**  
 *[Source Code (TypeScript)](https://github.com/zukliod)*
 * Enterprise Substation Information System with RBAC, real-time asset dashboards, Excel imports, and automated reporting.
@@ -86,7 +86,7 @@ def generate_markdown(projects):
 
 def update_resume_file():
     if not os.path.exists(RESUME_PATH):
-        print(f"Error: {RESUME_PATH} not found.")
+        print(f"Error: {RESUME_PATH} not found at {RESUME_PATH}")
         return
 
     top_projects = fetch_top_repos()
@@ -103,7 +103,7 @@ def update_resume_file():
     with open(RESUME_PATH, "w", encoding="utf-8") as f:
         f.write(updated_content)
 
-    print("resume.md updated successfully!")
+    print(f"Success: {RESUME_PATH} updated successfully with top GitHub projects!")
 
 if __name__ == "__main__":
     update_resume_file()
