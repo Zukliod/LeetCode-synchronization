@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Harshit (Zukliod) — Full-Stack & Automation Engineer specializing in distributed systems, algorithm design, and automated CI/CD pipelines." />
+<meta name="theme-color" content="#0a0a0f" />
+<title>Harshit (Zukliod) — Full-Stack & Automation Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          ink: {
+            950: '#06060a',
+            900: '#0a0a0f',
+            800: '#11111a',
+            700: '#1a1a26',
+            600: '#262638',
+            500: '#3a3a52',
+          },
+          accent: {
+            green: '#22c55e',
+            yellow: '#eab308',
+            orange: '#f97316',
+            red: '#ef4444',
+            blue: '#3b82f6',
+            cyan: '#06b6d4',
+            purple: '#a855f7',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'SF Mono', 'monospace'],
+        },
+        animation: {
+          'float': 'float 6s ease-in-out infinite',
+          'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          'gradient': 'gradient 8s ease infinite',
+          'shimmer': 'shimmer 2s linear infinite',
+          'fade-in-up': 'fadeInUp 0.7s ease-out forwards',
+          'spin-slow': 'spin 2s linear infinite',
+          'count-pop': 'countPop 0.5s ease-out',
+          'ring': 'ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        },
+        keyframes: {
+          float: {
+            '0%, 100%': { transform: 'translateY(0px)' },
+            '50%': { transform: 'translateY(-12px)' },
+          },
+          gradient: {
+            '0%, 100%': { 'background-position': '0% 50%' },
+            '50%': { 'background-position': '100% 50%' },
+          },
+          shimmer: {
+            '0%': { 'background-position': '-1000px 0' },
+            '100%': { 'background-position': '1000px 0' },
+          },
+          fadeInUp: {
+            '0%': { opacity: '0', transform: 'translateY(20px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+          countPop: {
+            '0%': { transform: 'scale(0.8)', opacity: '0' },
+            '60%': { transform: 'scale(1.08)' },
+            '100%': { transform: 'scale(1)', opacity: '1' },
+          },
+          ring: {
+            '0%': { boxShadow: '0 0 0 0 rgba(34, 197, 94, 0.4)' },
+            '70%': { boxShadow: '0 0 0 14px rgba(34, 197, 94, 0)' },
+            '100%': { boxShadow: '0 0 0 0 rgba(34, 197, 94, 0)' },
+          },
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #06060a;
+    color: #e2e8f0;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: rgba(59, 130, 246, 0.3); color: #fff; }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .bg-radial-glow {
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59, 130, 246, 0.15), transparent 70%),
+      radial-gradient(ellipse 40% 40% at 80% 60%, rgba(168, 85, 247, 0.08), transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 80%, rgba(6, 182, 212, 0.08), transparent 70%);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #60a5fa 0%, #a855f7 40%, #06b6d4 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
+  }
+
+  .glass-card {
+    background: linear-gradient(145deg, rgba(26, 26, 38, 0.85) 0%, rgba(17, 17, 26, 0.65) 100%);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(59, 130, 246, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -20px rgba(59, 130, 246, 0.3);
+  }
+
+  .nav-link {
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .stat-number {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.04em;
+  }
+
+  .difficulty-bar { height: 6px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.04); }
+  .difficulty-bar > div { height: 100%; transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); width: 0; }
+
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: #22c55e;
+    animation: ring 2s infinite;
+  }
+
+  .skill-chip {
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .skill-chip:hover {
+    transform: translateY(-2px) scale(1.03);
+    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(59, 130, 246, 0.08);
+  }
+</style>
+</head>
+<body class="bg-ink-950 bg-radial-glow relative">
+
+<div class="fixed inset-0 bg-grid pointer-events-none z-0 opacity-60"></div>
+<div class="relative z-10">
+
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-white/5 backdrop-blur-xl bg-ink-950/70">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 grid place-items-center font-bold text-white text-sm shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+          Z
+        </div>
+        <span class="font-semibold text-sm tracking-tight text-slate-200 hidden sm:block">Harshit<span class="text-accent-blue">.dev</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-slate-400">
+        <a href="#about" class="nav-link hover:text-white">About</a>
+        <a href="#stats" class="nav-link hover:text-white">Stats</a>
+        <a href="#skills" class="nav-link hover:text-white">Skills</a>
+        <a href="#contact" class="nav-link hover:text-white">Contact</a>
+      </nav>
+      <a href="#contact" class="text-sm px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-slate-200 transition-all">
+        <i class="fa fa-paper-plane-o mr-1.5 opacity-70"></i> Get in touch
+      </a>
+    </div>
+  </header>
+
+  <main id="top" class="pt-24">
+
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
+      <div class="flex items-start flex-col lg:flex-row gap-10 lg:gap-16">
+        <div class="flex-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300 mb-6">
+            <span class="status-dot"></span>
+            Available for Software Engineering Roles & Automation Projects
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
+            Building systems that
+            <span class="gradient-text">scale</span>,<br class="hidden sm:block" />
+            code that <span class="gradient-text">lasts</span>.
+          </h1>
+          <p class="mt-6 text-slate-400 text-lg max-w-xl leading-relaxed">
+            Full-Stack &amp; Automation Engineer specializing in Data Structures, Algorithms, self-updating portfolio pipelines, and distributed architecture.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#stats" class="px-5 py-3 rounded-xl font-medium text-sm bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 transition-all hover:-translate-y-0.5">
+              View Live Coding Stats <i class="fa fa-arrow-right ml-2 opacity-80"></i>
+            </a>
+            <a href="https://github.com/zukliod" target="_blank" rel="noopener" class="px-5 py-3 rounded-xl font-medium text-sm bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20 transition-all">
+              <i class="fa fa-github mr-2 opacity-80"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5">
+      <div class="grid md:grid-cols-5 gap-10">
+        <div class="md:col-span-2">
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">01 · ABOUT</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            A brief introduction
+          </h2>
+        </div>
+        <div class="md:col-span-3 space-y-5 text-slate-400 leading-relaxed">
+          <p>
+            I'm Harshit (Zukliod), a developer focused on elegant algorithm design, data structures, and engineering hands-free background pipelines that bridge code with developer visibility.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE STATS DASHBOARD -->
+    <section id="stats" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5">
+      <div class="mb-10 md:flex md:items-end md:justify-between gap-6">
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">02 · LIVE DASHBOARD</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            LeetCode statistics, <span class="gradient-text">updated in real time</span>
+          </h2>
+        </div>
+      </div>
+
+      <!-- STAT CARDS GRID -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mb-6">
+
+        <!-- TOTAL SOLVED -->
+        <div class="col-span-2 glass-card rounded-2xl p-6 lg:p-7">
+          <div class="flex items-start justify-between mb-5">
+            <div>
+              <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">Total Solved</div>
+              <div class="text-slate-300 text-sm">Across all difficulties</div>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-2 mb-4">
+            <div id="total-solved" class="stat-number text-5xl lg:text-6xl font-extrabold text-white">0</div>
+            <div class="text-slate-500 text-lg font-medium">problems</div>
+          </div>
+        </div>
+
+        <!-- EASY -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Easy</div>
+            <span class="px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-[10px] font-bold border border-green-500/20">EASY</span>
+          </div>
+          <div class="flex items-baseline gap-1.5 mb-3">
+            <div id="easy-count" class="stat-number text-4xl font-extrabold text-green-400">0</div>
+          </div>
+          <div class="difficulty-bar">
+            <div id="easy-bar" style="background: #22c55e;"></div>
+          </div>
+        </div>
+
+        <!-- MEDIUM -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Medium</div>
+            <span class="px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-400 text-[10px] font-bold border border-yellow-500/20">MEDIUM</span>
+          </div>
+          <div class="flex items-baseline gap-1.5 mb-3">
+            <div id="medium-count" class="stat-number text-4xl font-extrabold text-yellow-400">0</div>
+          </div>
+          <div class="difficulty-bar">
+            <div id="medium-bar" style="background: #eab308;"></div>
+          </div>
+        </div>
+
+        <!-- HARD -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Hard</div>
+            <span class="px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 text-[10px] font-bold border border-red-500/20">HARD</span>
+          </div>
+          <div class="flex items-baseline gap-1.5 mb-3">
+            <div id="hard-count" class="stat-number text-4xl font-extrabold text-red-400">0</div>
+          </div>
+          <div class="difficulty-bar">
+            <div id="hard-bar" style="background: #ef4444;"></div>
+          </div>
+        </div>
+
+        <!-- CONTEST RATING -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Contest Ranking</div>
+          </div>
+          <div class="flex items-baseline gap-2 mb-2">
+            <div id="contest-rating" class="stat-number text-4xl font-extrabold text-white leading-none">N/A</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5">
+      <div class="mb-10">
+        <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">03 · CAPABILITIES</div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          Tech stack &amp; tooling
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fa fa-code text-lg text-accent-blue"></i>
+            <h3 class="font-semibold text-white">Languages &amp; Automation</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">Python</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">JavaScript</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">C++</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 lg:px-8 py-20 border-t border-white/5">
+      <div class="glass-card rounded-3xl p-10 md:p-14 text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+          Let's build something <span class="gradient-text">extraordinary</span>.
+        </h2>
+        <a href="https://github.com/zukliod" target="_blank" class="px-6 py-3.5 rounded-xl font-medium text-sm bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white inline-flex items-center mt-6">
+          <i class="fa fa-github mr-2"></i> Connect on GitHub
+        </a>
+      </div>
+    </section>
+
+    <footer class="max-w-6xl mx-auto px-6 lg:px-8 py-10 border-t border-white/5 text-xs text-slate-500 text-center">
+      © <span id="year"></span> Harshit (Zukliod). All rights reserved.
+    </footer>
+  </main>
+</div>
+
+<!-- LIVE LEETCODE STATS LOADER SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const USERNAME = "zukliod";
+
+  async function fetchWithTimeout(url, options = {}) {
+    const { timeout = 8000 } = options;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    try {
+      const response = await fetch(url, { ...options, signal: controller.signal });
+      clearTimeout(timeoutId);
+      return response;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      throw error;
+    }
+  }
+
+  async function loadLeetCodeMetrics() {
+    const statsEndpoint = `https://leetcode-api-faisalshohag.vercel.app/${USERNAME}`;
+    const contestEndpoint = `https://alfa-leetcode-api.onrender.com/${USERNAME}/contest`;
+
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.innerText = new Date().getFullYear();
+
+    // 1. Fetch Problem Breakdown Stats
+    try {
+      const statsResponse = await fetchWithTimeout(statsEndpoint, { timeout: 8000 });
+      if (statsResponse.ok) {
+        const statsData = await statsResponse.json();
+
+        const totalSolved = statsData.totalSolved ?? 0;
+        const easySolved = statsData.easySolved ?? 0;
+        const mediumSolved = statsData.mediumSolved ?? 0;
+        const hardSolved = statsData.hardSolved ?? 0;
+        const ranking = statsData.ranking ?? "N/A";
+
+        const totalEl = document.getElementById("total-solved");
+        const easyEl = document.getElementById("easy-count");
+        const mediumEl = document.getElementById("medium-count");
+        const hardEl = document.getElementById("hard-count");
+        const rankingEl = document.getElementById("contest-rating");
+
+        if (totalEl) totalEl.innerText = totalSolved.toLocaleString();
+        if (easyEl) easyEl.innerText = easySolved.toLocaleString();
+        if (mediumEl) mediumEl.innerText = mediumSolved.toLocaleString();
+        if (hardEl) hardEl.innerText = hardSolved.toLocaleString();
+        if (rankingEl) rankingEl.innerText = typeof ranking === 'number' ? `#${ranking.toLocaleString()}` : ranking;
+
+        const easyBar = document.getElementById("easy-bar");
+        const mediumBar = document.getElementById("medium-bar");
+        const hardBar = document.getElementById("hard-bar");
+
+        if (easyBar) easyBar.style.width = `${Math.min((easySolved / 250) * 100, 100)}%`;
+        if (mediumBar) mediumBar.style.width = `${Math.min((mediumSolved / 250) * 100, 100)}%`;
+        if (hardBar) hardBar.style.width = `${Math.min((hardSolved / 100) * 100, 100)}%`;
+      }
+    } catch (error) {
+      console.warn("[LeetCode Metrics] Retaining baseline UI values:", error);
+    }
+  }
+
+  loadLeetCodeMetrics();
+});
+</script>
+</body>
+</html>
