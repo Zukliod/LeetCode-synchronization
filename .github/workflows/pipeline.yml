@@ -3,7 +3,7 @@ name: Automated Portfolio Engine
 on:
   schedule:
     - cron: '0 18 * * *' # Runs daily at 18:00 UTC
-  workflow_dispatch: # Allows manual trigger from GitHub UI
+  workflow_dispatch: # Manual trigger
 
 jobs:
   run-pipeline:
@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests markdown xhtml2pdf
 
-      - name: Run LinkedIn & Resume Updater
+      - name: Run Pipeline & Generate PDF Variants
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
@@ -31,55 +31,9 @@ jobs:
           LEETCODE_USERNAME: "zukliod"
         run: python update_linkedin.py
 
-      - name: Compile resume.md to resume.pdf (ATS Single-Column)
-        run: |
-          python -c "
-          import markdown
-          from xhtml2pdf import pisa
-
-          with open('resume.md', 'r', encoding='utf-8') as f:
-              md_text = f.read()
-
-          html_content = markdown.markdown(md_text, extensions=['tables'])
-
-          # ATS-Friendly Single-Column PDF Layout
-          pdf_template = f'''
-          <!DOCTYPE html>
-          <html>
-          <head>
-              <style>
-                  @page {{
-                      size: letter;
-                      margin: 0.5in;
-                  }}
-                  body {{
-                      font-family: Helvetica, Arial, sans-serif;
-                      font-size: 10pt;
-                      line-height: 1.4;
-                      color: #111111;
-                  }}
-                  h1 {{ font-size: 18pt; margin-bottom: 2px; text-transform: uppercase; }}
-                  h2 {{ font-size: 12pt; border-bottom: 1px solid #333; margin-top: 12px; margin-bottom: 6px; text-transform: uppercase; }}
-                  h3 {{ font-size: 10pt; margin-top: 6px; margin-bottom: 2px; }}
-                  ul {{ margin-top: 2px; margin-bottom: 6px; padding-left: 18px; }}
-                  li {{ margin-bottom: 2px; }}
-                  p {{ margin-top: 2px; margin-bottom: 4px; }}
-              </style>
-          </head>
-          <body>
-              {html_content}
-          </body>
-          </html>
-          '''
-
-          with open('resume.pdf', 'wb') as pdf_file:
-              pisa.CreatePDF(pdf_template, dest=pdf_file)
-          print('[+] resume.pdf successfully generated.')
-          "
-
       - name: Commit and Push Changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add resume.md resume.pdf
-          git diff --staged --quiet || (git commit -m "chore(auto): update leetcode metrics & rebuild resume.pdf [skip ci]" && git push)
+          git add resume.md Harshit_FullStack_Resume.pdf Harshit_Backend_Resume.pdf
+          git diff --staged --quiet || (git commit -m "chore(auto): update metrics & recompile PDF variants [skip ci]" && git push)
