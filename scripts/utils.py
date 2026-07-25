@@ -1,25 +1,13 @@
+import logging
 import requests
 import time
 
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s | %(levelname)s | %(message)s"
+)
 
-def log(message: str):
-
-    print(f"[INFO] {message}")
-
-
-def success(message: str):
-
-    print(f"[SUCCESS] {message}")
-
-
-def warning(message: str):
-
-    print(f"[WARNING] {message}")
-
-
-def error(message: str):
-
-    print(f"[ERROR] {message}")
+logger = logging.getLogger(__name__)
 
 
 def get_json(url, timeout=10, retries=3):
@@ -28,16 +16,18 @@ def get_json(url, timeout=10, retries=3):
 
         try:
 
-            response = requests.get(url, timeout=timeout)
+            response = requests.get(
+                url,
+                timeout=timeout
+            )
 
             response.raise_for_status()
 
             return response.json()
 
-        except Exception as e:
+        except Exception:
 
             if attempt == retries - 1:
-
-                raise e
+                raise
 
             time.sleep(2)
