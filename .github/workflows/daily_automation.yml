@@ -1,0 +1,6 @@
+- name: Fetch Latest MERN & AI GitHub Projects
+        run: python update_resume_projects.py
+
+      - name: Build PDF Resumes
+        run: |
+          # Command used to compile PDF resumes (e.g., md-to-pdf resume.md)
