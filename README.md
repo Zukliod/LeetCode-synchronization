@@ -1,7 +1,4 @@
-Here is the complete, self-contained **`README.md`** file ready to be saved in your repository:
-
-```markdown
-# 🚀 Automated Developer Portfolio & Resume Synchronization Pipeline
+# Automated Developer Portfolio & Resume Synchronization Pipeline
 
 > **"Build once, automate forever."** — An automated system designed to keep your GitHub, LeetCode stats, LinkedIn presence, Markdown resume (`resume.md`), compiled PDF resumes, and live portfolio website (`index.html`) automatically synchronized with zero manual hassle.
 
