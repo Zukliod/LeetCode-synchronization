@@ -699,94 +699,188 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- 4. AUTOMATED GITHUB PROJECT CURATOR ---
+  // --- 4. OPTIMUM 3-TIER AUTOMATED GITHUB PROJECT CURATOR ---
   async function loadGitHubProjects() {
     const projectsContainer = document.getElementById("projects-grid");
     if (!projectsContainer) return;
 
-    const githubEndpoint = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+    const EXCLUDED_PATTERNS = [
+      "leetcode", "dsa", "practice", "blog", "tutorial", "exercise", 
+      "assignment", "solution", "problem", "hacker-rank", "hackerrank",
+      "zukliod", "linkedin-synchronization", "leetcode-synchronization"
+    ];
+
+    const FLAGSHIP_KEYWORDS = [
+      "kesco", "kodekaleesh", "sports", "yantra", "ecoeducation", "sis"
+    ];
+
+    function calculateRecencyScore(updatedAtStr) {
+      if (!updatedAtStr) return 0;
+      const updatedDate = new Date(updatedAtStr);
+      const now = new Date();
+      const diffDays = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
+
+      if (diffDays <= 7) return 100;
+      if (diffDays <= 30) return 80;
+      if (diffDays <= 90) return 60;
+      if (diffDays <= 180) return 40;
+      if (diffDays <= 365) return 20;
+      return 5;
+    }
 
     try {
-      const response = await fetchWithTimeout(githubEndpoint, { timeout: 8000 });
-      if (!response.ok) throw new Error("Failed to fetch GitHub repos");
+      const response = await fetchWithTimeout(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`, { timeout: 8000 });
+      if (!response.ok) throw new Error("GitHub API request failed");
 
       const repos = await response.json();
 
-      const filtered = repos.filter(repo => 
-        !repo.fork && 
-        !repo.archived && 
-        repo.name.toLowerCase() !== GITHUB_USERNAME.toLowerCase() &&
-        repo.description
-      );
+      const filtered = repos.filter(repo => {
+        const rawName = repo.name.toLowerCase();
+        const normalizedName = rawName.replace(/_/g, "-");
+        const topics = repo.topics || [];
+
+        if (repo.fork || repo.archived) return false;
+        if (EXCLUDED_PATTERNS.some(bad => normalizedName.includes(bad))) return false;
+
+        const isOptedIn = topics.includes("portfolio") || FLAGSHIP_KEYWORDS.some(key => normalizedName.includes(key));
+        const desc = (repo.description || "").toLowerCase();
+        const lang = (repo.language || "").toLowerCase();
+        const combinedText = `${normalizedName} ${desc} ${lang} ${topics.join(" ")}`;
+
+        if (!isOptedIn && !["mern", "react", "node", "python", "ai", "machine-learning"].some(k => combinedText.includes(k))) {
+          return false;
+        }
+
+        return true;
+      });
 
       const scored = filtered.map(repo => {
-        let score = (repo.stargazers_count * 10) + (repo.forks_count * 5);
-        if (repo.topics && repo.topics.length > 0) score += 15;
-        if (repo.homepage) score += 10;
-        
-        const daysOld = (new Date() - new Date(repo.updated_at)) / (1000 * 60 * 60 * 24);
-        if (daysOld < 60) score += 20;
+        const rawName = repo.name.toLowerCase();
+        const normalizedName = rawName.replace(/_/g, "-");
+        const desc = (repo.description || "").toLowerCase();
+        const lang = (repo.language || "").toLowerCase();
+        const topics = repo.topics || [];
+        const combinedText = `${normalizedName} ${desc} ${lang} ${topics.join(" ")}`;
 
-        return { ...repo, score };
+        const recencyScore = calculateRecencyScore(repo.updated_at);
+        let stackScore = 0;
+
+        if (topics.includes("portfolio")) stackScore += 200;
+
+        if (["mern", "react", "node", "express", "mongo", "prisma", "typescript", "full-stack"].some(term => combinedText.includes(term))) {
+          stackScore += 150;
+        }
+
+        if (["python", "ai", "machine-learning", "ml", "ocr", "nlp", "pandas"].some(term => combinedText.includes(term))) {
+          stackScore += 120;
+        }
+
+        if (repo.homepage) stackScore += 80;
+
+        const tractionScore = (repo.stargazers_count * 10) + (repo.forks_count * 5);
+        const finalScore = stackScore + recencyScore + tractionScore;
+
+        return { ...repo, score: finalScore };
       });
 
       const topProjects = scored.sort((a, b) => b.score - a.score).slice(0, 4);
 
-      if (topProjects.length === 0) {
-        projectsContainer.innerHTML = `<p class="text-slate-500 text-sm col-span-2 text-center py-4">No featured public repositories found. Visit <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" class="text-accent-blue underline">GitHub</a> directly.</p>`;
+      if (topProjects.length > 0) {
+        renderProjects(topProjects, projectsContainer);
         return;
       }
+    } catch (error) {
+      console.warn("[GitHub Curator] Unable to load dynamic projects, rendering fallback:", error);
+    }
 
-      projectsContainer.innerHTML = topProjects.map(repo => {
-        const lang = repo.language || "Code";
-        const stars = repo.stargazers_count;
-        const desc = repo.description.length > 110 
-          ? repo.description.substring(0, 110) + "..." 
-          : repo.description;
+    // Fallback UI rendering
+    const fallbackProjects = [
+      {
+        name: "KESCO Substation Information System",
+        description: "Enterprise Substation Information System for KESCO power discoms with RBAC, real-time asset dashboards, Excel imports, and automated reporting.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "TypeScript",
+        stargazers_count: 0,
+        topics: ["mern", "react", "nodejs", "typescript"]
+      },
+      {
+        name: "kodekaleesh-2025",
+        description: "AI-powered legal document verification & summary platform using Python, OCR, NLP, React, and Ethereum smart contract proof verification.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "Python",
+        stargazers_count: 0,
+        topics: ["python", "ai", "ocr", "react"]
+      },
+      {
+        name: "sports-event-management-system",
+        description: "Real-time Sports Event Management & Live Scoring System with Node.js, Express, Prisma ORM, Redis caching, and WebSocket updates.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "TypeScript",
+        stargazers_count: 0,
+        topics: ["nodejs", "express", "redis", "socket-io"]
+      },
+      {
+        name: "yantra-calculator",
+        description: "Interactive astronomical calculator and location optimizer for Samrat & Rama Yantras built with Node.js and modern JavaScript.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "JavaScript",
+        stargazers_count: 0,
+        topics: ["nodejs", "algorithms", "astronomy"]
+      }
+    ];
 
-        const topicsHtml = (repo.topics || []).slice(0, 3).map(topic => 
-          `<span class="text-[10px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 font-mono">${topic}</span>`
-        ).join("");
+    renderProjects(fallbackProjects, projectsContainer);
+  }
 
-        return `
-          <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
-            <div>
-              <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-2">
-                  <i class="fa fa-folder-o text-accent-blue text-lg"></i>
-                  <h3 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight">${repo.name}</h3>
-                </div>
-                <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
-                  ${stars > 0 ? `<span><i class="fa fa-star text-yellow-400 mr-1"></i>${stars}</span>` : ''}
-                  <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-accent-blue font-semibold border border-blue-500/20 text-[10px]">${lang}</span>
-                </div>
+  function renderProjects(projects, container) {
+    container.innerHTML = projects.map(repo => {
+      const lang = repo.language || "Full-Stack";
+      const stars = repo.stargazers_count || 0;
+      const desc = repo.description || "Software development application.";
+      const truncatedDesc = desc.length > 110 ? desc.substring(0, 110) + "..." : desc;
+
+      const topicsHtml = (repo.topics || []).slice(0, 3).map(topic => 
+        `<span class="text-[10px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 font-mono">${topic}</span>`
+      ).join("");
+
+      return `
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <i class="fa fa-folder-o text-accent-blue text-lg"></i>
+                <h3 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight">${repo.name}</h3>
               </div>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">${desc}</p>
+              <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+                ${stars > 0 ? `<span><i class="fa fa-star text-yellow-400 mr-1"></i>${stars}</span>` : ''}
+                <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-accent-blue font-semibold border border-blue-500/20 text-[10px]">${lang}</span>
+              </div>
             </div>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">${truncatedDesc}</p>
+          </div>
 
-            <div>
-              <div class="flex flex-wrap gap-1.5 mb-4">
-                ${topicsHtml}
-              </div>
-              <div class="flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-3 mt-auto">
-                <a href="${repo.html_url}" target="_blank" rel="noopener" class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors">
-                  <i class="fa fa-github opacity-80"></i> Source Code
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              ${topicsHtml}
+            </div>
+            <div class="flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-3 mt-auto">
+              <a href="${repo.html_url}" target="_blank" rel="noopener" class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors">
+                <i class="fa fa-github opacity-80"></i> Source Code
+              </a>
+              ${repo.homepage ? `
+                <a href="${repo.homepage}" target="_blank" rel="noopener" class="text-xs font-medium text-accent-blue hover:underline flex items-center gap-1">
+                  Live Demo <i class="fa fa-external-link text-[10px]"></i>
                 </a>
-                ${repo.homepage ? `
-                  <a href="${repo.homepage}" target="_blank" rel="noopener" class="text-xs font-medium text-accent-blue hover:underline flex items-center gap-1">
-                    Live Demo <i class="fa fa-external-link text-[10px]"></i>
-                  </a>
-                ` : ''}
-              </div>
+              ` : ''}
             </div>
           </div>
-        `;
-      }).join("");
-
-    } catch (error) {
-      console.warn("[GitHub Projects Curator] Unable to load projects:", error);
-      projectsContainer.innerHTML = `<p class="text-slate-500 text-sm col-span-2 text-center py-4">Projects temporarily unavailable. Visit <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" class="text-accent-blue underline">GitHub</a> directly.</p>`;
-    }
+        </div>
+      `;
+    }).join("");
   }
 
   // --- 5. AI RECRUITER CHATBOT CONTROLLER (SAFE KEY INTEGRATION) ---
@@ -833,7 +927,6 @@ document.addEventListener("DOMContentLoaded", () => {
         Answer professionally and concisely (under 60 words). Be helpful to recruiters.
         Question: ${userText}`;
 
-        // Uses dynamic environment variable or fallback query mechanism
         const activeKey = window.GEMINI_API_KEY || "";
         
         if (!activeKey) {

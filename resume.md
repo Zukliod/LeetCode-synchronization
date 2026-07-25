@@ -44,17 +44,17 @@ Aspiring Software Development Engineer with strong foundations in Data Structure
 
 ### FEATURED PROJECTS
 <!-- START_GITHUB_PROJECTS -->
-**Cnn Model For Written Numeric Mnist Dataset**  
-*[Source Code (Python)](https://github.com/Zukliod/CNN-model-for-written-numeric-MNIST-dataset)*
-* It's a convolutional neural network model for mnist dataset made using python 
+**Kodekaleesh 2025**  
+*[Source Code (Python)](https://github.com/Zukliod/kodekaleesh-2025)*
+* Full-stack software engineering application.
 
-**Web Blog Pages**  
-*[Source Code (HTML)](https://github.com/Zukliod/web_blog_pages)*
-* this repository contains all the web blog pages
+**Ecoeducationapp**  
+*[Source Code (TypeScript)](https://github.com/Zukliod/EcoEducationApp)*
+* Full-stack software engineering application.
 
-**Leetcode Repository**  
-*[Source Code (Java)](https://github.com/Zukliod/leetcode-repository)*
-* A collection of LeetCode questions to ace the coding interview! - Created using [LeetHub v2](https://github.com/arunbhardwaj/LeetHub-2.0)
+**Sports Event Management System**  
+*[Source Code (TypeScript)](https://github.com/Zukliod/sports-event-management-system)*
+* Full-stack software engineering application.
 
 <!-- END_GITHUB_PROJECTS -->
 
