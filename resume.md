@@ -44,16 +44,16 @@ Aspiring Software Development Engineer with strong foundations in Data Structure
 
 ### FEATURED PROJECTS
 <!-- START_GITHUB_PROJECTS -->
+**Inboxguardian**  
+*[Source Code (Python)](https://github.com/Zukliod/inboxguardian)*
+* ull-stack email intelligence & inbox triage application with automated prioritization algorithms, email analytics, and an interactive React dashboard
+
+**Motionsensor Game**  
+*[Source Code (Python)](https://github.com/Zukliod/motionsensor_game)*
+* Computer vision gesture controller for Hill Climb Racing 2 using real-time motion tracking and hill climbing optimization algorithms.
+
 **Kodekaleesh 2025**  
 *[Source Code (Python)](https://github.com/Zukliod/kodekaleesh-2025)*
-* Full-stack software engineering application.
-
-**Ecoeducationapp**  
-*[Source Code (TypeScript)](https://github.com/Zukliod/EcoEducationApp)*
-* Full-stack software engineering application.
-
-**Sports Event Management System**  
-*[Source Code (TypeScript)](https://github.com/Zukliod/sports-event-management-system)*
 * Full-stack software engineering application.
 
 <!-- END_GITHUB_PROJECTS -->
