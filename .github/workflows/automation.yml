@@ -1,6 +1,10 @@
 name: Portfolio Automation
 
 on:
+  schedule:
+    # Every day at 6:00 PM UTC (11:30 PM IST)
+    - cron: '0 18 * * *'
+
   workflow_dispatch:
 
 permissions:
