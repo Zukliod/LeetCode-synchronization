@@ -1,0 +1,7 @@
+requests
+google-generativeai
+markdown
+pdfkit
+xhtml2pdf
+pypdf
+pillow
