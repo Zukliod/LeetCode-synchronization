@@ -8,21 +8,17 @@ AUTHOR_URN = os.getenv("LINKEDIN_AUTHOR_URN")
 GITHUB_TOKEN = os.getenv("GH_TOKEN")
 GEMINI_KEY = os.getenv("GEMINI_API_KEY")
 
-# 2. Extract your username dynamically from the action environment
-GITHUB_USERNAME = os.getenv("GITHUB_REPOSITORY", "").split("/")[0]
+# 2. FIXED: Hardcode your exact username here to prevent dynamic extraction issues
+GITHUB_USERNAME = "Zukliod"
 
 def get_recent_github_activity():
     """Fetches global public GitHub events from the last 24 hours."""
-    if not GITHUB_USERNAME:
-        print("❌ Missing GitHub repository username configuration.")
-        return None
-
-    # Public endpoint to scan your profile activity feed
+    # Correct, secure REST API endpoint for public user events
     url = f"https://github.com{GITHUB_USERNAME}/events/public"
     headers = {
         "Accept": "application/vnd.github.v3+json"
     }
-    # Include authentication if token is provided to bypass strict rate limiting
+    # Include authorization only if token is validly passed
     if GITHUB_TOKEN:
         headers["Authorization"] = f"token {GITHUB_TOKEN}"
     
@@ -45,17 +41,17 @@ def get_recent_github_activity():
 
             repo_name = event["repo"]["name"].split("/")[-1]
 
-            # Tracks LeetHub commits pushed to your repository
-            if event["type"] == "PushEvent" and "leetcode" in repo_name.lower():
+            # Counts any pushes (such as automated LeetHub or manual commits)
+            if event["type"] == "PushEvent":
                 leetcode_count += len(event["payload"].get("commits", []))
-            # Captures any freshly minted open-source codebases
+            # Catches freshly created public repositories
             elif event["type"] == "CreateEvent" and event["payload"].get("ref_type") == "repository":
                 if repo_name not in new_projects:
                     new_projects.append(repo_name)
 
         return leetcode_count, new_projects
     except Exception as e:
-        print(f"❌ Error collecting public metrics: {e}")
+        print(f"❌ Error collecting metrics: {e}")
         return None
 
 def generate_ai_caption(leetcode_count, new_projects):
@@ -64,16 +60,16 @@ def generate_ai_caption(leetcode_count, new_projects):
         print("⚠️ Gemini Key missing. Falling back to basic formatting.")
         return None
 
-    raw_data_summary = f"LeetCode coding problems synced today: {leetcode_count}. New repositories created: {new_projects}."
+    raw_data_summary = f"Code commits pushed today: {leetcode_count}. New public repositories built: {new_projects}."
     
     url = f"https://googleapis.com{GEMINI_KEY}"
     headers = {"Content-Type": "application/json"}
     
     prompt = (
         f"You are a professional software engineer building in public on LinkedIn. "
-        f"Rewrite the following data metrics into an engaging, conversational, and inspiring LinkedIn post. "
-        f"Talk naturally about consistency, programming growth, computer science fundamentals, or problem-solving. "
-        f"Keep it brief and well-spaced. Include exactly 3 relevant tech hashtags at the very bottom. "
+        f"Rewrite the following technical activity metrics into an engaging, conversational, and inspiring LinkedIn post. "
+        f"Talk naturally about consistency, algorithmic problem solving, software development, or growth. "
+        f"Keep it brief, human-sounding, and well-spaced. Include exactly 3 relevant industry hashtags at the very bottom. "
         f"Raw data to format: {raw_data_summary}"
     )
 
@@ -90,7 +86,7 @@ def generate_ai_caption(leetcode_count, new_projects):
             ai_text = res_json['candidates']['content']['parts']['text']
             return ai_text.strip()
         else:
-            print(f"⚠️ Gemini API Status Code Error: {response.status_code}")
+            print(f"⚠️ Gemini Error: {response.status_code}")
             return None
     except Exception as e:
         print(f"⚠️ Failed to communicate with AI: {e}")
@@ -124,24 +120,25 @@ def publish_to_linkedin(message):
         print(f"❌ LinkedIn Error {response.status_code}: {response.text}")
 
 def main():
-    print("Gathering public developer statistics...")
+    print("Gathering developer statistics...")
     activity = get_recent_github_activity()
-    if not activity:
+    if activity is None:
+        print("ℹ️ Error occurred while fetching data. Exiting.")
         return
         
     leetcode_count, new_projects = activity
     if leetcode_count == 0 and not new_projects:
-        print("😴 No public updates tracked for today. Pipeline idling.")
+        print("😴 No updates tracked for today. Pipeline idling.")
         return
 
     print("Generating intelligent post copy via Gemini...")
     linkedin_message = generate_ai_caption(leetcode_count, new_projects)
     
-    # Fallback configuration structure if AI key fails
+    # Static Fallback structure if AI key fails or is empty
     if not linkedin_message:
         status_updates = []
         if leetcode_count > 0:
-            status_updates.append(f"✅ Completed {leetcode_count} data structure problems on LeetCode.")
+            status_updates.append(f"✅ Pushed {leetcode_count} code solutions and updates to GitHub.")
         if new_projects:
             status_updates.append(f"🛠️ Launched new repositories: {', '.join(new_projects)}.")
         linkedin_message = "📅 Daily Dev Progress Sync\n\n" + "\n".join(status_updates) + "\n\n#BuildInPublic"
