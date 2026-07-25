@@ -31,7 +31,7 @@ jobs:
           sudo apt-get install -y wkhtmltopdf
 
       - name: Fetch Latest MERN & AI GitHub Projects
-        run: python LinkedIn-synchronization/update_resume_projects.py
+        run: python update_resume_projects.py
 
       - name: Run Daily LinkedIn & Resume Stats Script
         env:
@@ -48,8 +48,9 @@ jobs:
           python -c "
           import markdown, pdfkit, os
 
-          if os.path.exists('LinkedIn-synchronization/  resume.md'):
-              with open('resume.md', 'r', encoding='utf-8') as f:
+          resume_path = 'resume.md'
+          if os.path.exists(resume_path):
+              with open(resume_path, 'r', encoding='utf-8') as f:
                   html_text = markdown.markdown(f.read())
               
               styled_html = f'''
@@ -74,7 +75,6 @@ jobs:
               pdfkit.from_string(styled_html, 'Harshit_FullStack_Resume.pdf', options=options)
               pdfkit.from_string(styled_html, 'Harshit_Backend_Resume.pdf', options=options)
           "
-
       - name: Commit and Push Updated Files & PDFs
         run: |
           git config --global user.name "github-actions[bot]"
