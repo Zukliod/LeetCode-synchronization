@@ -27,4 +27,4 @@ jobs:
       - name: Publish Posts to Dev.to
         env:
           DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
-        run: python publish_devto.py
+        run: python scripts/publish_devto.py
