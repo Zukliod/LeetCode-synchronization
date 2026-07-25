@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests google-generativeai markdown pdfkit
+          pip install requests google-generativeai markdown pdfkit xhtml2pdf
 
       - name: Install wkhtmltopdf for PDF compilation
         run: |
