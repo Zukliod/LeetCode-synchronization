@@ -2,7 +2,7 @@
 **Full-Stack & Automation Engineer** | github.com/zukliod | linkedin.com/in/zukliod
 
 ## TECHNICAL SUMMARY
-* <!-- LEETCODE_START -->Solved 200+ algorithmic problems on LeetCode<!-- LEETCODE_END -->
+* <!-- LEETCODE_START -->Solved 251+ algorithmic problems on LeetCode<!-- LEETCODE_END -->
 * Specialized in Python, JavaScript, Automated CI/CD Pipelines, and Systems Engineering.
 
 <!-- FULLSTACK_ONLY_START -->
