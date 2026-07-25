@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Harshit (Zukliod) — Full-Stack & Automation Engineer specializing in distributed systems, algorithm design, and automated CI/CD pipelines." />
+<meta name="description" content="Harshit Singh — B.Tech CSE-AI Student at MPEC, Full-Stack & Automation Engineer specializing in AI, Web Development, and Data Structures." />
 <meta name="theme-color" content="#0a0a0f" />
-<title>Harshit (Zukliod) — Full-Stack & Automation Engineer</title>
+<title>Harshit Singh — B.Tech CSE-AI | Software Engineer</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
@@ -83,32 +83,55 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
   html { scroll-behavior: smooth; }
-  body {
+  
+  /* Dark Mode Styles */
+  html.dark body {
     background-color: #06060a;
     color: #e2e8f0;
+  }
+  html.dark .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  }
+  html.dark .glass-card {
+    background: linear-gradient(145deg, rgba(26, 26, 38, 0.85) 0%, rgba(17, 17, 26, 0.65) 100%);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Light Mode Styles */
+  html:not(.dark) body {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+  html:not(.dark) .bg-grid {
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  }
+  html:not(.dark) .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.05);
+  }
+
+  body {
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection { background: rgba(59, 130, 246, 0.3); color: #fff; }
 
-  .bg-grid {
-    background-image:
-      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 48px 48px;
-  }
-
-  .bg-radial-glow {
-    background:
-      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(59, 130, 246, 0.15), transparent 70%),
-      radial-gradient(ellipse 40% 40% at 80% 60%, rgba(168, 85, 247, 0.08), transparent 70%),
-      radial-gradient(ellipse 40% 40% at 15% 80%, rgba(6, 182, 212, 0.08), transparent 70%);
-  }
+  .bg-grid { background-size: 48px 48px; }
 
   .gradient-text {
-    background: linear-gradient(135deg, #60a5fa 0%, #a855f7 40%, #06b6d4 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #a855f7 40%, #06b6d4 100%);
     background-size: 200% 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -116,17 +139,10 @@
     animation: gradient 8s ease infinite;
   }
 
-  .glass-card {
-    background: linear-gradient(145deg, rgba(26, 26, 38, 0.85) 0%, rgba(17, 17, 26, 0.65) 100%);
-    backdrop-filter: blur(14px) saturate(180%);
-    -webkit-backdrop-filter: blur(14px) saturate(180%);
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-
   .glass-card:hover {
-    border-color: rgba(59, 130, 246, 0.25);
+    border-color: rgba(59, 130, 246, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px -20px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 40px -20px rgba(59, 130, 246, 0.2);
   }
 
   .nav-link {
@@ -150,7 +166,7 @@
     letter-spacing: -0.04em;
   }
 
-  .difficulty-bar { height: 6px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,0.04); }
+  .difficulty-bar { height: 6px; border-radius: 999px; overflow: hidden; background: rgba(150,150,150,0.1); }
   .difficulty-bar > div { height: 100%; transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); width: 0; }
 
   .status-dot {
@@ -169,29 +185,40 @@
   }
 </style>
 </head>
-<body class="bg-ink-950 bg-radial-glow relative">
+<body class="bg-ink-950 relative">
 
 <div class="fixed inset-0 bg-grid pointer-events-none z-0 opacity-60"></div>
 <div class="relative z-10">
 
   <!-- NAVIGATION -->
-  <header class="fixed top-0 inset-x-0 z-50 border-b border-white/5 backdrop-blur-xl bg-ink-950/70">
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-black/5 dark:border-white/5 backdrop-blur-xl bg-slate-50/70 dark:bg-ink-950/70 transition-colors">
     <div class="max-w-6xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
       <a href="#top" class="flex items-center gap-2.5 group">
         <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 grid place-items-center font-bold text-white text-sm shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
-          Z
+          H
         </div>
-        <span class="font-semibold text-sm tracking-tight text-slate-200 hidden sm:block">Harshit<span class="text-accent-blue">.dev</span></span>
+        <span class="font-semibold text-sm tracking-tight text-slate-900 dark:text-slate-200 hidden sm:block">Harshit Singh<span class="text-accent-blue">.dev</span></span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm text-slate-400">
-        <a href="#about" class="nav-link hover:text-white">About</a>
-        <a href="#stats" class="nav-link hover:text-white">Stats</a>
-        <a href="#skills" class="nav-link hover:text-white">Skills</a>
-        <a href="#contact" class="nav-link hover:text-white">Contact</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-slate-600 dark:text-slate-400">
+        <a href="#about" class="nav-link hover:text-slate-900 dark:hover:text-white">About</a>
+        <a href="#stats" class="nav-link hover:text-slate-900 dark:hover:text-white">Stats</a>
+        <a href="#skills" class="nav-link hover:text-slate-900 dark:hover:text-white">Skills</a>
+        <a href="#experience" class="nav-link hover:text-slate-900 dark:hover:text-white">Experience</a>
+        <a href="#projects" class="nav-link hover:text-slate-900 dark:hover:text-white">Projects</a>
+        <a href="#contact" class="nav-link hover:text-slate-900 dark:hover:text-white">Contact</a>
       </nav>
-      <a href="#contact" class="text-sm px-4 py-2 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-slate-200 transition-all">
-        <i class="fa fa-paper-plane-o mr-1.5 opacity-70"></i> Get in touch
-      </a>
+
+      <div class="flex items-center gap-3">
+        <!-- DARK/LIGHT MODE TOGGLE BUTTON -->
+        <button id="theme-toggle" aria-label="Toggle Theme" class="w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-all">
+          <i id="theme-toggle-dark-icon" class="fa fa-moon-o hidden"></i>
+          <i id="theme-toggle-light-icon" class="fa fa-sun-o hidden text-yellow-400"></i>
+        </button>
+
+        <a href="#contact" class="text-sm px-4 py-2 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 text-slate-800 dark:text-slate-200 transition-all">
+          <i class="fa fa-paper-plane-o mr-1.5 opacity-70"></i> Get in touch
+        </a>
+      </div>
     </div>
   </header>
 
@@ -201,23 +228,25 @@
     <section class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
       <div class="flex items-start flex-col lg:flex-row gap-10 lg:gap-16">
         <div class="flex-1">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-slate-300 mb-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs text-slate-700 dark:text-slate-300 mb-6">
             <span class="status-dot"></span>
-            Available for Software Engineering Roles & Automation Projects
+            Final Year Student at MPEC || B.Tech CSE-AI || Available for Opportunities
           </div>
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.05]">
-            Building systems that
-            <span class="gradient-text">scale</span>,<br class="hidden sm:block" />
-            code that <span class="gradient-text">lasts</span>.
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.05]">
+            Architecting <span class="gradient-text">AI systems</span> &amp;<br class="hidden sm:block" />
+            solving <span class="gradient-text">complex algorithms</span>.
           </h1>
-          <p class="mt-6 text-slate-400 text-lg max-w-xl leading-relaxed">
-            Full-Stack &amp; Automation Engineer specializing in Data Structures, Algorithms, self-updating portfolio pipelines, and distributed architecture.
+          <p class="mt-6 text-slate-600 dark:text-slate-400 text-lg max-w-xl leading-relaxed">
+            I'm <strong>Harshit Singh</strong>, a Computer Science &amp; AI undergraduate based in Varanasi, India. Specialized in algorithmic problem solving, web development, data visualization, and automated RPA workflow architecture.
           </p>
           <div class="mt-8 flex flex-wrap items-center gap-4">
             <a href="#stats" class="px-5 py-3 rounded-xl font-medium text-sm bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 transition-all hover:-translate-y-0.5">
               View Live Coding Stats <i class="fa fa-arrow-right ml-2 opacity-80"></i>
             </a>
-            <a href="https://github.com/zukliod" target="_blank" rel="noopener" class="px-5 py-3 rounded-xl font-medium text-sm bg-white/5 border border-white/10 text-slate-200 hover:bg-white/10 hover:border-white/20 transition-all">
+            <a href="https://www.linkedin.com/in/harshit-singh-21jan2004" target="_blank" rel="noopener" class="px-5 py-3 rounded-xl font-medium text-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 hover:bg-black/10 dark:hover:bg-white/10 transition-all">
+              <i class="fa fa-linkedin mr-2 text-blue-500"></i> LinkedIn
+            </a>
+            <a href="https://github.com/zukliod" target="_blank" rel="noopener" class="px-5 py-3 rounded-xl font-medium text-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 hover:bg-black/10 dark:hover:bg-white/10 transition-all">
               <i class="fa fa-github mr-2 opacity-80"></i> GitHub
             </a>
           </div>
@@ -226,28 +255,31 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5">
+    <section id="about" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
       <div class="grid md:grid-cols-5 gap-10">
         <div class="md:col-span-2">
-          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">01 · ABOUT</div>
-          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-            A brief introduction
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">01 · ABOUT ME</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Background &amp; Focus
           </h2>
         </div>
-        <div class="md:col-span-3 space-y-5 text-slate-400 leading-relaxed">
+        <div class="md:col-span-3 space-y-5 text-slate-600 dark:text-slate-400 leading-relaxed">
           <p>
-            I'm Harshit (Zukliod), a developer focused on elegant algorithm design, data structures, and engineering hands-free background pipelines that bridge code with developer visibility.
+            I am a B.Tech Computer Science and Engineering (Artificial Intelligence) student at <strong>Maharana Pratap Engineering College (MPEC), Kanpur</strong>.
+          </p>
+          <p>
+            With expertise spanning intermediate problem solving, Python programming, web development, and UiPath automation, I bridge analytical algorithms with real-world software engineering.
           </p>
         </div>
       </div>
     </section>
 
     <!-- LIVE STATS DASHBOARD -->
-    <section id="stats" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5">
+    <section id="stats" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
       <div class="mb-10 md:flex md:items-end md:justify-between gap-6">
         <div>
           <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">02 · LIVE DASHBOARD</div>
-          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
             LeetCode statistics, <span class="gradient-text">updated in real time</span>
           </h2>
         </div>
@@ -261,11 +293,11 @@
           <div class="flex items-start justify-between mb-5">
             <div>
               <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">Total Solved</div>
-              <div class="text-slate-300 text-sm">Across all difficulties</div>
+              <div class="text-slate-700 dark:text-slate-300 text-sm">Across all difficulties</div>
             </div>
           </div>
           <div class="flex items-baseline gap-2 mb-4">
-            <div id="total-solved" class="stat-number text-5xl lg:text-6xl font-extrabold text-white">0</div>
+            <div id="total-solved" class="stat-number text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white">0</div>
             <div class="text-slate-500 text-lg font-medium">problems</div>
           </div>
         </div>
@@ -274,10 +306,10 @@
         <div class="glass-card rounded-2xl p-6">
           <div class="flex items-start justify-between mb-4">
             <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Easy</div>
-            <span class="px-2 py-0.5 rounded-full bg-green-500/15 text-green-400 text-[10px] font-bold border border-green-500/20">EASY</span>
+            <span class="px-2 py-0.5 rounded-full bg-green-500/15 text-green-600 dark:text-green-400 text-[10px] font-bold border border-green-500/20">EASY</span>
           </div>
           <div class="flex items-baseline gap-1.5 mb-3">
-            <div id="easy-count" class="stat-number text-4xl font-extrabold text-green-400">0</div>
+            <div id="easy-count" class="stat-number text-4xl font-extrabold text-green-600 dark:text-green-400">0</div>
           </div>
           <div class="difficulty-bar">
             <div id="easy-bar" style="background: #22c55e;"></div>
@@ -288,10 +320,10 @@
         <div class="glass-card rounded-2xl p-6">
           <div class="flex items-start justify-between mb-4">
             <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Medium</div>
-            <span class="px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-400 text-[10px] font-bold border border-yellow-500/20">MEDIUM</span>
+            <span class="px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold border border-yellow-500/20">MEDIUM</span>
           </div>
           <div class="flex items-baseline gap-1.5 mb-3">
-            <div id="medium-count" class="stat-number text-4xl font-extrabold text-yellow-400">0</div>
+            <div id="medium-count" class="stat-number text-4xl font-extrabold text-yellow-600 dark:text-yellow-400">0</div>
           </div>
           <div class="difficulty-bar">
             <div id="medium-bar" style="background: #eab308;"></div>
@@ -302,10 +334,10 @@
         <div class="glass-card rounded-2xl p-6">
           <div class="flex items-start justify-between mb-4">
             <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Hard</div>
-            <span class="px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 text-[10px] font-bold border border-red-500/20">HARD</span>
+            <span class="px-2 py-0.5 rounded-full bg-red-500/15 text-red-600 dark:text-red-400 text-[10px] font-bold border border-red-500/20">HARD</span>
           </div>
           <div class="flex items-baseline gap-1.5 mb-3">
-            <div id="hard-count" class="stat-number text-4xl font-extrabold text-red-400">0</div>
+            <div id="hard-count" class="stat-number text-4xl font-extrabold text-red-600 dark:text-red-400">0</div>
           </div>
           <div class="difficulty-bar">
             <div id="hard-bar" style="background: #ef4444;"></div>
@@ -318,7 +350,7 @@
             <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Contest Ranking</div>
           </div>
           <div class="flex items-baseline gap-2 mb-2">
-            <div id="contest-rating" class="stat-number text-4xl font-extrabold text-white leading-none">N/A</div>
+            <div id="contest-rating" class="stat-number text-4xl font-extrabold text-slate-900 dark:text-white leading-none">N/A</div>
           </div>
         </div>
 
@@ -326,51 +358,169 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-white/5">
+    <section id="skills" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
       <div class="mb-10">
         <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">03 · CAPABILITIES</div>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
-          Tech stack &amp; tooling
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+          Skills &amp; Certifications
         </h2>
       </div>
       <div class="grid md:grid-cols-3 gap-5">
         <div class="glass-card rounded-2xl p-6">
           <div class="flex items-center gap-3 mb-4">
             <i class="fa fa-code text-lg text-accent-blue"></i>
-            <h3 class="font-semibold text-white">Languages &amp; Automation</h3>
+            <h3 class="font-semibold text-slate-900 dark:text-white">Core Technical Stack</h3>
           </div>
           <div class="flex flex-wrap gap-2">
-            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">Python</span>
-            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">JavaScript</span>
-            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">C++</span>
-            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-slate-300">GitHub Actions</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Python</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Problem Solving (Intermediate)</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Web Development</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">UiPath (RPA)</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Data Visualization</span>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fa fa-certificate text-lg text-accent-blue"></i>
+            <h3 class="font-semibold text-slate-900 dark:text-white">Verified Certifications</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3 text-sm text-slate-600 dark:text-slate-300">
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> AI Internship Completion (Acmegrade)</div>
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> Problem Solving (Intermediate) Certificate</div>
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> Python Essentials 1</div>
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> Data Visualization with Python</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="max-w-6xl mx-auto px-6 lg:px-8 py-20 border-t border-white/5">
-      <div class="glass-card rounded-3xl p-10 md:p-14 text-center max-w-2xl mx-auto">
-        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-          Let's build something <span class="gradient-text">extraordinary</span>.
-        </h2>
-        <a href="https://github.com/zukliod" target="_blank" class="px-6 py-3.5 rounded-xl font-medium text-sm bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white inline-flex items-center mt-6">
-          <i class="fa fa-github mr-2"></i> Connect on GitHub
-        </a>
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">04 · EXPERIENCE</div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Work History</h2>
+          
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">Project Intern</h3>
+              <span class="text-xs text-accent-blue font-mono">Aug 2024 - Oct 2024</span>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-3">Acmegrade · Kanpur, UP</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Completed hands-on internship focusing on Artificial Intelligence project delivery and practical software implementations.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">05 · EDUCATION</div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Academic Path</h2>
+          
+          <div class="glass-card rounded-2xl p-6 mb-4">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">B.Tech - Computer Science &amp; Engineering</h3>
+              <span class="text-xs text-accent-blue font-mono">2023 - 2027</span>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Maharana Pratap Engineering College (MPEC), Kanpur</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Specialization in Artificial Intelligence (CSE-AI)</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">Intermediate (PCM with Computer Science)</h3>
+              <span class="text-xs text-slate-500 font-mono">Completed April 2022</span>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">St. John's School BLW</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <footer class="max-w-6xl mx-auto px-6 lg:px-8 py-10 border-t border-white/5 text-xs text-slate-500 text-center">
-      © <span id="year"></span> Harshit (Zukliod). All rights reserved.
+    <!-- AUTOMATED GITHUB PROJECTS -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
+      <div class="mb-10 md:flex md:items-end md:justify-between gap-6">
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">06 · FEATURED WORK</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Top open-source <span class="gradient-text">repositories</span>
+          </h2>
+        </div>
+        <div class="text-xs text-slate-500 font-mono mt-2 md:mt-0">
+          <i class="fa fa-refresh mr-1 text-accent-blue"></i> Auto-curated via GitHub API
+        </div>
+      </div>
+
+      <!-- Dynamic Projects Grid Container -->
+      <div id="projects-grid" class="grid md:grid-cols-2 gap-6">
+        <!-- Skeleton Loading Cards -->
+        <div class="glass-card rounded-2xl p-6 animate-pulse h-48 border border-black/5 dark:border-white/5"></div>
+        <div class="glass-card rounded-2xl p-6 animate-pulse h-48 border border-black/5 dark:border-white/5"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 lg:px-8 py-20 border-t border-black/5 dark:border-white/5">
+      <div class="glass-card rounded-3xl p-10 md:p-14 text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
+          Let's build something <span class="gradient-text">extraordinary</span>.
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">
+          Varanasi, Uttar Pradesh, India | Phone: <a href="tel:+917393064211" class="text-accent-blue hover:underline font-mono">+91 7393064211</a>
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="mailto:rarchit101@gmail.com" class="px-6 py-3.5 rounded-xl font-medium text-sm bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white inline-flex items-center">
+            <i class="fa fa-envelope-o mr-2"></i> Send Email
+          </a>
+          <a href="tel:+917393064211" class="px-6 py-3.5 rounded-xl font-medium text-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 inline-flex items-center">
+            <i class="fa fa-phone mr-2 text-green-500"></i> Call +91 7393064211
+          </a>
+          <a href="https://www.linkedin.com/in/harshit-singh-21jan2004" target="_blank" class="px-6 py-3.5 rounded-xl font-medium text-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 inline-flex items-center">
+            <i class="fa fa-linkedin mr-2 text-blue-500"></i> LinkedIn Profile
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="max-w-6xl mx-auto px-6 lg:px-8 py-10 border-t border-black/5 dark:border-white/5 text-xs text-slate-500 text-center">
+      © <span id="year"></span> Harshit Singh (Zukliod). All rights reserved.
     </footer>
   </main>
 </div>
 
-<!-- LIVE LEETCODE STATS LOADER SCRIPT -->
+<!-- THEME SWITCHER & API DATA LOADERS -->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const USERNAME = "zukliod";
+  const GITHUB_USERNAME = "zukliod";
+
+  // --- 1. DARK / LIGHT THEME TOGGLE CONTROLLER ---
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  const darkIcon = document.getElementById("theme-toggle-dark-icon");
+  const lightIcon = document.getElementById("theme-toggle-light-icon");
+
+  if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.classList.add("dark");
+    lightIcon.classList.remove("hidden");
+  } else {
+    document.documentElement.classList.remove("dark");
+    darkIcon.classList.remove("hidden");
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      darkIcon.classList.toggle("hidden");
+      lightIcon.classList.toggle("hidden");
+
+      if (document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
+      } else {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
+      }
+    });
+  }
 
   async function fetchWithTimeout(url, options = {}) {
     const { timeout = 8000 } = options;
@@ -387,14 +537,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // --- 2. LEETCODE METRICS LOADER ---
   async function loadLeetCodeMetrics() {
-    const statsEndpoint = `https://leetcode-api-faisalshohag.vercel.app/${USERNAME}`;
-    const contestEndpoint = `https://alfa-leetcode-api.onrender.com/${USERNAME}/contest`;
+    const statsEndpoint = `https://leetcode-api-faisalshohag.vercel.app/${GITHUB_USERNAME}`;
 
     const yearEl = document.getElementById("year");
     if (yearEl) yearEl.innerText = new Date().getFullYear();
 
-    // 1. Fetch Problem Breakdown Stats
     try {
       const statsResponse = await fetchWithTimeout(statsEndpoint, { timeout: 8000 });
       if (statsResponse.ok) {
@@ -431,7 +580,98 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // --- 3. AUTOMATED GITHUB PROJECT CURATOR ---
+  async function loadGitHubProjects() {
+    const projectsContainer = document.getElementById("projects-grid");
+    if (!projectsContainer) return;
+
+    const githubEndpoint = `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+
+    try {
+      const response = await fetchWithTimeout(githubEndpoint, { timeout: 8000 });
+      if (!response.ok) throw new Error("Failed to fetch GitHub repos");
+
+      const repos = await response.json();
+
+      const filtered = repos.filter(repo => 
+        !repo.fork && 
+        !repo.archived && 
+        repo.name.toLowerCase() !== GITHUB_USERNAME.toLowerCase() &&
+        repo.description
+      );
+
+      const scored = filtered.map(repo => {
+        let score = (repo.stargazers_count * 10) + (repo.forks_count * 5);
+        if (repo.topics && repo.topics.length > 0) score += 15;
+        if (repo.homepage) score += 10;
+        
+        const daysOld = (new Date() - new Date(repo.updated_at)) / (1000 * 60 * 60 * 24);
+        if (daysOld < 60) score += 20;
+
+        return { ...repo, score };
+      });
+
+      const topProjects = scored.sort((a, b) => b.score - a.score).slice(0, 4);
+
+      if (topProjects.length === 0) {
+        projectsContainer.innerHTML = `<p class="text-slate-500 text-sm col-span-2 text-center py-4">No featured public repositories found. Visit <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" class="text-accent-blue underline">GitHub</a> directly.</p>`;
+        return;
+      }
+
+      projectsContainer.innerHTML = topProjects.map(repo => {
+        const lang = repo.language || "Code";
+        const stars = repo.stargazers_count;
+        const desc = repo.description.length > 110 
+          ? repo.description.substring(0, 110) + "..." 
+          : repo.description;
+
+        const topicsHtml = (repo.topics || []).slice(0, 3).map(topic => 
+          `<span class="text-[10px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 font-mono">${topic}</span>`
+        ).join("");
+
+        return `
+          <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <div class="flex items-center gap-2">
+                  <i class="fa fa-folder-o text-accent-blue text-lg"></i>
+                  <h3 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight">${repo.name}</h3>
+                </div>
+                <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+                  ${stars > 0 ? `<span><i class="fa fa-star text-yellow-400 mr-1"></i>${stars}</span>` : ''}
+                  <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-accent-blue font-semibold border border-blue-500/20 text-[10px]">${lang}</span>
+                </div>
+              </div>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">${desc}</p>
+            </div>
+
+            <div>
+              <div class="flex flex-wrap gap-1.5 mb-4">
+                ${topicsHtml}
+              </div>
+              <div class="flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-3 mt-auto">
+                <a href="${repo.html_url}" target="_blank" rel="noopener" class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors">
+                  <i class="fa fa-github opacity-80"></i> Source Code
+                </a>
+                ${repo.homepage ? `
+                  <a href="${repo.homepage}" target="_blank" rel="noopener" class="text-xs font-medium text-accent-blue hover:underline flex items-center gap-1">
+                    Live Demo <i class="fa fa-external-link text-[10px]"></i>
+                  </a>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+    } catch (error) {
+      console.warn("[GitHub Projects Curator] Unable to load projects:", error);
+      projectsContainer.innerHTML = `<p class="text-slate-500 text-sm col-span-2 text-center py-4">Projects temporarily unavailable. Visit <a href="https://github.com/${GITHUB_USERNAME}" target="_blank" class="text-accent-blue underline">GitHub</a> directly.</p>`;
+    }
+  }
+
   loadLeetCodeMetrics();
+  loadGitHubProjects();
 });
 </script>
 </body>
