@@ -253,7 +253,7 @@ If a GitHub Action run shows a red **X**:
 
 I built and open-sourced this pipeline to help fellow engineering students and developers bypass the tedious, manual headache of keeping their career profiles updated. 
 
-If this template saves you time, helps you prepare for placement season, or powers your portfolio, **I would1 truly appreciate your support in building engagement for my work!**
+If this template saves you time, helps you prepare for placement season, or powers your portfolio, **I would truly appreciate your support in building engagement for my work!**
 
 ### How you can credit & support this project:
 
