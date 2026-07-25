@@ -1,30 +1,60 @@
-name: Dev.to Auto-Publisher
+name: Dev.to Auto Publisher
 
 on:
   push:
     paths:
-      - 'posts/*.md' # Triggers only when you add or edit markdown files inside /posts/
-  workflow_dispatch: # Allows manual trigger
+      - "posts/*.md"
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: devto-publisher
+  cancel-in-progress: true
 
 jobs:
   publish:
+    name: Publish Articles to Dev.to
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: requirements.txt
 
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install -r requirements.txt
 
-      - name: Publish Posts to Dev.to
-        env:
-          DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
-        run: python scripts/publish_devto.py
+      - name: Verify Repository
+        run: |
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "Branch: $GITHUB_REF_NAME"
+          ls -la
+          ls -la posts || true
+          ls -la scripts || true
+
+      - name: Publish Markdown Articles
+        run: |
+          python scripts/publish_devto.py
+
+      - name: Success
+        if: success()
+        run: echo "✅ Dev.to publishing completed successfully."
+
+      - name: Failure
+        if: failure()
+        run: echo "❌ Dev.to publishing failed."
