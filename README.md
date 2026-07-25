@@ -246,32 +246,19 @@ If a GitHub Action run shows a red **X**:
 * `Errno 2 No such file or directory`: Incorrect path in `.github/workflows/daily_automation.yml`.
 * `Permission to repo denied`: Workflow permissions need to be changed to **"Read and write permissions"** in **Settings > Actions > General**.
 
-##⭐️ Credits & Giving Back
-I built and open-sourced this pipeline to help fellow engineering students and developers bypass the tedious, manual headache of keeping their career profiles updated.
-
-If this template saves you time, helps you prepare for placement season, or powers your portfolio, I would truly appreciate your support in building engagement for my work!
-
-How you can credit & support this project:
-Star this Repository ⭐️: Click the Star button at the top-right of this page. It helps increase the visibility of this project for other students.
-
-Fork, Don't Just Copy 🔀: If you are building your own version on GitHub, use the Fork button! This maintains a visible connection back to the original source.
-
-Keep the Footer Credit intact (Optional but Appreciated): In your index.html footer or README.md, you can include a small shoutout:
-
-HTML
-
-
-<p>Automated pipeline built with template by <a href="[https://github.com/zukliod](https://github.com/zukliod)">Harshit Singh (zukliod)</a></p>
-Connect on LinkedIn 🤝: If this system helped you land interviews or build a great portfolio, let's connect!
-
-GitHub: @zukliod
-
-LinkedIn: Harshit Singh
-
-Thank you, and all the best with your placement prep and job hunt! 🚀
-
-
-
 ```
 
 ```
+## ⭐️ Credits & Giving Back
+
+I built and open-sourced this pipeline to help fellow engineering students and developers bypass the tedious, manual headache of keeping their career profiles updated. 
+
+If this template saves you time, helps you prepare for placement season, or powers your portfolio, **I would1 truly appreciate your support in building engagement for my work!**
+
+### How you can credit & support this project:
+
+1. **Star this Repository ⭐️:** Click the **Star** button at the top-right of this page. It helps increase the visibility of this project for other students and recruiters.
+2. **Fork, Don't Just Copy 🔀:** If you are building your own version on GitHub, use the **Fork** button! This maintains a visible connection back to the original source repository.
+3. **Keep the Footer Credit intact (Optional but Appreciated):** In your `index.html` footer or `README.md`, you can include a small shoutout:
+   ```html
+   <p>Automated pipeline built with template by <a href="[https://github.com/zukliod](https://github.com/zukliod)">Harshit Singh (zukliod)</a></p>
