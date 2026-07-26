@@ -1,11 +1,11 @@
-name: Portfolio Automation
+name: Daily Portfolio Automation
 
 on:
-  schedule:
-    # Every day at 6:00 PM UTC (11:30 PM IST)
-    - cron: '0 18 * * *'
-
   workflow_dispatch:
+
+  schedule:
+    # Runs every day at 6:00 PM UTC (11:30 PM IST)
+    - cron: "0 18 * * *"
 
 permissions:
   contents: write
@@ -14,25 +14,22 @@ concurrency:
   group: portfolio-automation
   cancel-in-progress: false
 
-env:
-  GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-  LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-  LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
-  LEETCODE_USERNAME: zukliod
-
 jobs:
-  automation:
+  automate:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+
+    timeout-minutes: 15
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.12"
           cache: "pip"
           cache-dependency-path: requirements.txt
 
@@ -40,28 +37,22 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          
+
       - name: Update Resume Projects
-        run: |
-          python scripts/main.py
-      - name: Update Resume & Publish LinkedIn
-        run: |
-          python scripts/update_linkedin.py    
+        run: python scripts/update_resume_projects.py
 
-      - name: Verify Python
-        run: |
-          python --version
-          pip --version
-
-      - name: Verify Repository
-        run: |
-          pwd
-          ls -la
+      - name: Run Daily Automation
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
+          LEETCODE_USERNAME: ${{ secrets.LEETCODE_USERNAME }}
+        run: python scripts/main.py
 
       - name: Commit & Push Changes
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add .
 
