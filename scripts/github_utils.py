@@ -1,5 +1,5 @@
-from .config import LEETCODE_USERNAME
-from .utils import get_json, logger
+from config import LEETCODE_USERNAME
+from utils import get_json, logger
 
 
 def fetch_leetcode_stats(username=LEETCODE_USERNAME):
