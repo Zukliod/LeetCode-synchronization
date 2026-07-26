@@ -736,7 +736,7 @@ Shows an AI-generated LinkedIn post published by the automation framework.
 
 ## Dev.to Article
 
-![Dev.to Article](docs/screenshots/Devto-Article.png)
+![Dev.to Article](docs/screenshots/devto-article.png)
 
 Displays an automatically published technical article.
 
@@ -744,7 +744,7 @@ Displays an automatically published technical article.
 
 ## Repository Structure
 
-![Repository Overview](docs/screenshots/repository-home.png)
+![Repository Overview](docs/screenshots/repository-overview.png)
 Overview of the modular project organization.
 
 ---
