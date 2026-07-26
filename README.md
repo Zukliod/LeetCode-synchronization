@@ -702,11 +702,15 @@ No additional manual steps are required.
 
 > Screenshots will be added as the project evolves.
 
+##🌐 Live Portfolio Dashboard
+
+![Portfolio Dashboard](docs/screenshots/portfolio-dashboard.png)
+
+Shows live portfolio analytics.
+
 ## GitHub Actions
 
-```
-docs/screenshots/github-actions-success.png
-```
+![GitHub Actions](docs/screenshots/github-actions-success.png)
 
 Shows a successful automation workflow execution.
 
@@ -714,9 +718,7 @@ Shows a successful automation workflow execution.
 
 ## Generated Resume
 
-```
-docs/screenshots/generated-resume.png
-```
+![Generated Resume](docs/screenshots/generated-resume.png)
 
 Demonstrates the automatically generated ATS-friendly resume.
 
@@ -734,9 +736,7 @@ Shows an AI-generated LinkedIn post published by the automation framework.
 
 ## Dev.to Article
 
-```
-docs/screenshots/devto-article.png
-```
+![Dev.to Article](docs/screenshots/Devto-Article.png)
 
 Displays an automatically published technical article.
 
@@ -744,10 +744,7 @@ Displays an automatically published technical article.
 
 ## Repository Structure
 
-```
-docs/screenshots/repository-structure.png
-```
-
+![Repository Overview](docs/screenshots/repository-home.png)
 Overview of the modular project organization.
 
 ---
