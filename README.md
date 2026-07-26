@@ -702,7 +702,7 @@ No additional manual steps are required.
 
 > Screenshots will be added as the project evolves.
 
-##🌐 Live Portfolio Dashboard
+🌐 Live Portfolio Dashboard
 
 ![Portfolio Dashboard](docs/screenshots/portfolio-dashboard.png)
 
