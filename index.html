@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Harshit Singh — B.Tech CSE-AI Student at MPEC, Full-Stack & Automation Engineer specializing in AI, Web Development, and Data Structures." />
+<meta name="theme-color" content="#0a0a0f" />
+<title>Harshit Singh — B.Tech CSE-AI | Software Engineer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          ink: {
+            950: '#06060a',
+            900: '#0a0a0f',
+            800: '#11111a',
+            700: '#1a1a26',
+            600: '#262638',
+            500: '#3a3a52',
+          },
+          accent: {
+            green: '#22c55e',
+            yellow: '#eab308',
+            orange: '#f97316',
+            red: '#ef4444',
+            blue: '#3b82f6',
+            cyan: '#06b6d4',
+            purple: '#a855f7',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          mono: ['JetBrains Mono', 'ui-monospace', 'SF Mono', 'monospace'],
+        },
+        animation: {
+          'float': 'float 6s ease-in-out infinite',
+          'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          'gradient': 'gradient 8s ease infinite',
+          'shimmer': 'shimmer 2s linear infinite',
+          'fade-in-up': 'fadeInUp 0.7s ease-out forwards',
+          'spin-slow': 'spin 2s linear infinite',
+          'count-pop': 'countPop 0.5s ease-out',
+          'ring': 'ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        },
+        keyframes: {
+          float: {
+            '0%, 100%': { transform: 'translateY(0px)' },
+            '50%': { transform: 'translateY(-12px)' },
+          },
+          gradient: {
+            '0%, 100%': { 'background-position': '0% 50%' },
+            '50%': { 'background-position': '100% 50%' },
+          },
+          shimmer: {
+            '0%': { 'background-position': '-1000px 0' },
+            '100%': { 'background-position': '1000px 0' },
+          },
+          fadeInUp: {
+            '0%': { opacity: '0', transform: 'translateY(20px)' },
+            '100%': { opacity: '1', transform: 'translateY(0)' },
+          },
+          countPop: {
+            '0%': { transform: 'scale(0.8)', opacity: '0' },
+            '60%': { transform: 'scale(1.08)' },
+            '100%': { transform: 'scale(1)', opacity: '1' },
+          },
+          ring: {
+            '0%': { boxShadow: '0 0 0 0 rgba(34, 197, 94, 0.4)' },
+            '70%': { boxShadow: '0 0 0 14px rgba(34, 197, 94, 0)' },
+            '100%': { boxShadow: '0 0 0 0 rgba(34, 197, 94, 0)' },
+          },
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+  html { scroll-behavior: smooth; }
+  
+  /* Dark Mode Styles */
+  html.dark body {
+    background-color: #06060a;
+    color: #e2e8f0;
+  }
+  html.dark .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  }
+  html.dark .glass-card {
+    background: linear-gradient(145deg, rgba(26, 26, 38, 0.85) 0%, rgba(17, 17, 26, 0.65) 100%);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Light Mode Styles */
+  html:not(.dark) body {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+  html:not(.dark) .bg-grid {
+    background-image:
+      linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  }
+  html:not(.dark) .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px) saturate(180%);
+    -webkit-backdrop-filter: blur(14px) saturate(180%);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.05);
+  }
+
+  body {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection { background: rgba(59, 130, 246, 0.3); color: #fff; }
+
+  .bg-grid { background-size: 48px 48px; }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #3b82f6 0%, #a855f7 40%, #06b6d4 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 8s ease infinite;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px -20px rgba(59, 130, 246, 0.2);
+  }
+
+  .nav-link {
+    position: relative;
+    transition: color 0.2s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #3b82f6, #a855f7);
+    transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  .stat-number {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.04em;
+  }
+
+  .difficulty-bar { height: 6px; border-radius: 999px; overflow: hidden; background: rgba(150,150,150,0.1); }
+  .difficulty-bar > div { height: 100%; transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1); width: 0; }
+
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 999px;
+    background: #22c55e;
+    animation: ring 2s infinite;
+  }
+
+  .skill-chip {
+    transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .skill-chip:hover {
+    transform: translateY(-2px) scale(1.03);
+    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(59, 130, 246, 0.08);
+  }
+</style>
+</head>
+<body class="bg-ink-950 relative">
+
+<div class="fixed inset-0 bg-grid pointer-events-none z-0 opacity-60"></div>
+<div class="relative z-10">
+
+  <!-- NAVIGATION -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b border-black/5 dark:border-white/5 backdrop-blur-xl bg-slate-50/70 dark:bg-ink-950/70 transition-colors">
+    <div class="max-w-6xl mx-auto px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 via-purple-500 to-cyan-400 grid place-items-center font-bold text-white text-sm shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform">
+          H
+        </div>
+        <span class="font-semibold text-sm tracking-tight text-slate-900 dark:text-slate-200 hidden sm:block">Harshit Singh<span class="text-accent-blue">.dev</span></span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-slate-600 dark:text-slate-400">
+        <a href="#about" class="nav-link hover:text-slate-900 dark:hover:text-white">About</a>
+        <a href="#stats" class="nav-link hover:text-slate-900 dark:hover:text-white">Stats</a>
+        <a href="#skills" class="nav-link hover:text-slate-900 dark:hover:text-white">Skills</a>
+        <a href="#experience" class="nav-link hover:text-slate-900 dark:hover:text-white">Experience</a>
+        <a href="#projects" class="nav-link hover:text-slate-900 dark:hover:text-white">Projects</a>
+        <a href="#contact" class="nav-link hover:text-slate-900 dark:hover:text-white">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- DARK/LIGHT MODE TOGGLE BUTTON -->
+        <button id="theme-toggle" aria-label="Toggle Theme" class="w-9 h-9 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:bg-black/10 dark:hover:bg-white/10 transition-all">
+          <i id="theme-toggle-dark-icon" class="fa fa-moon-o hidden"></i>
+          <i id="theme-toggle-light-icon" class="fa fa-sun-o hidden text-yellow-400"></i>
+        </button>
+
+        <!-- RESUME DROPDOWN BUTTON -->
+        <div class="relative">
+          <button id="resume-menu-btn" aria-expanded="false" class="text-xs sm:text-sm px-3.5 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-accent-blue hover:bg-blue-500/20 font-medium transition-all flex items-center gap-1.5 focus:outline-none">
+            <i class="fa fa-download"></i> <span class="hidden sm:inline">Resume</span> <i id="resume-arrow" class="fa fa-chevron-down text-[10px] opacity-70 transition-transform duration-200"></i>
+          </button>
+          
+          <div id="resume-menu-dropdown" class="absolute right-0 pt-1 w-56 hidden z-50">
+            <div class="glass-card rounded-xl shadow-2xl p-2 border border-black/10 dark:border-white/10 bg-slate-50/95 dark:bg-ink-950/95">
+              <a href="./Harshit_FullStack_Resume.pdf" download="Harshit_FullStack_Resume.pdf" class="block px-3 py-2 text-xs rounded-lg text-slate-800 dark:text-slate-200 hover:bg-blue-500/10 hover:text-accent-blue transition-colors">
+                <i class="fa fa-file-pdf-o mr-2 text-red-500"></i> Full-Stack Variant (PDF)
+              </a>
+              <a href="./Harshit_Backend_Resume.pdf" download="Harshit_Backend_Resume.pdf" class="block px-3 py-2 text-xs rounded-lg text-slate-800 dark:text-slate-200 hover:bg-blue-500/10 hover:text-accent-blue transition-colors">
+                <i class="fa fa-file-pdf-o mr-2 text-red-500"></i> Backend Variant (PDF)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="text-xs sm:text-sm px-3.5 py-2 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 hover:bg-black/10 dark:hover:bg-white/10 text-slate-800 dark:text-slate-200 transition-all">
+          <i class="fa fa-paper-plane-o mr-1.5 opacity-70"></i> Get in touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="pt-24">
+
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
+      <div class="flex items-start flex-col lg:flex-row gap-10 lg:gap-16">
+        <div class="flex-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-xs text-slate-700 dark:text-slate-300 mb-6">
+            <span class="status-dot"></span>
+            Final Year Student at MPEC || B.Tech CSE-AI || Available for Opportunities
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.05]">
+            Architecting <span class="gradient-text">AI systems</span> &amp;<br class="hidden sm:block" />
+            solving <span class="gradient-text">complex algorithms</span>.
+          </h1>
+          <p class="mt-6 text-slate-600 dark:text-slate-400 text-lg max-w-xl leading-relaxed">
+            I'm <strong>Harshit Singh</strong>, a Computer Science &amp; AI undergraduate based in Varanasi, India. Specialized in algorithmic problem solving, web development, data visualization, and automated RPA workflow architecture.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#stats" class="px-5 py-3 rounded-xl font-medium text-sm bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white shadow-xl shadow-blue-500/20 hover:shadow-blue-500/40 transition-all hover:-translate-y-0.5">
+              View Live Coding Stats <i class="fa fa-arrow-right ml-2 opacity-80"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/harshit-singh-21jan2004" target="_blank" rel="noopener" class="px-5 py-3 rounded-xl font-medium text-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 hover:bg-black/10 dark:hover:bg-white/10 transition-all">
+              <i class="fa fa-linkedin mr-2 text-blue-500"></i> LinkedIn
+            </a>
+            <a href="https://github.com/zukliod" target="_blank" rel="noopener" class="px-5 py-3 rounded-xl font-medium text-sm bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 hover:bg-black/10 dark:hover:bg-white/10 transition-all">
+              <i class="fa fa-github mr-2 opacity-80"></i> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
+      <div class="grid md:grid-cols-5 gap-10">
+        <div class="md:col-span-2">
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">01 · ABOUT ME</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Background &amp; Focus
+          </h2>
+        </div>
+        <div class="md:col-span-3 space-y-5 text-slate-600 dark:text-slate-400 leading-relaxed">
+          <p>
+            I am a B.Tech Computer Science and Engineering (Artificial Intelligence) student at <strong>Maharana Pratap Engineering College (MPEC), Kanpur</strong>.
+          </p>
+          <p>
+            With expertise spanning intermediate problem solving, Python programming, web development, and UiPath automation, I bridge analytical algorithms with real-world software engineering.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIVE STATS DASHBOARD -->
+    <section id="stats" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
+      <div class="mb-10 md:flex md:items-end md:justify-between gap-6">
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">02 · LIVE DASHBOARD</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+            LeetCode statistics, <span class="gradient-text">updated in real time</span>
+          </h2>
+        </div>
+      </div>
+
+      <!-- STAT CARDS GRID -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 mb-6">
+
+        <!-- TOTAL SOLVED -->
+        <div class="col-span-2 glass-card rounded-2xl p-6 lg:p-7">
+          <div class="flex items-start justify-between mb-5">
+            <div>
+              <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold mb-1">Total Solved</div>
+              <div class="text-slate-700 dark:text-slate-300 text-sm">Across all difficulties</div>
+            </div>
+          </div>
+          <div class="flex items-baseline gap-2 mb-4">
+            <div id="total-solved" class="stat-number text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white">0</div>
+            <div class="text-slate-500 text-lg font-medium">problems</div>
+          </div>
+        </div>
+
+        <!-- EASY -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Easy</div>
+            <span class="px-2 py-0.5 rounded-full bg-green-500/15 text-green-600 dark:text-green-400 text-[10px] font-bold border border-green-500/20">EASY</span>
+          </div>
+          <div class="flex items-baseline gap-1.5 mb-3">
+            <div id="easy-count" class="stat-number text-4xl font-extrabold text-green-600 dark:text-green-400">0</div>
+          </div>
+          <div class="difficulty-bar">
+            <div id="easy-bar" style="background: #22c55e;"></div>
+          </div>
+        </div>
+
+        <!-- MEDIUM -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Medium</div>
+            <span class="px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-600 dark:text-yellow-400 text-[10px] font-bold border border-yellow-500/20">MEDIUM</span>
+          </div>
+          <div class="flex items-baseline gap-1.5 mb-3">
+            <div id="medium-count" class="stat-number text-4xl font-extrabold text-yellow-600 dark:text-yellow-400">0</div>
+          </div>
+          <div class="difficulty-bar">
+            <div id="medium-bar" style="background: #eab308;"></div>
+          </div>
+        </div>
+
+        <!-- HARD -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Hard</div>
+            <span class="px-2 py-0.5 rounded-full bg-red-500/15 text-red-600 dark:text-red-400 text-[10px] font-bold border border-red-500/20">HARD</span>
+          </div>
+          <div class="flex items-baseline gap-1.5 mb-3">
+            <div id="hard-count" class="stat-number text-4xl font-extrabold text-red-600 dark:text-red-400">0</div>
+          </div>
+          <div class="difficulty-bar">
+            <div id="hard-bar" style="background: #ef4444;"></div>
+          </div>
+        </div>
+
+        <!-- CONTEST RATING -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-start justify-between mb-4">
+            <div class="text-xs uppercase tracking-wider text-slate-500 font-semibold">Contest Ranking</div>
+          </div>
+          <div class="flex items-baseline gap-2 mb-2">
+            <div id="contest-rating" class="stat-number text-4xl font-extrabold text-slate-900 dark:text-white leading-none">N/A</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
+      <div class="mb-10">
+        <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">03 · CAPABILITIES</div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+          Skills &amp; Certifications
+        </h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="glass-card rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fa fa-code text-lg text-accent-blue"></i>
+            <h3 class="font-semibold text-slate-900 dark:text-white">Core Technical Stack</h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Python</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Problem Solving (Intermediate)</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Web Development</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">UiPath (RPA)</span>
+            <span class="skill-chip text-xs px-3 py-1.5 rounded-lg bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-300">Data Visualization</span>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <i class="fa fa-certificate text-lg text-accent-blue"></i>
+            <h3 class="font-semibold text-slate-900 dark:text-white">Verified Certifications</h3>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3 text-sm text-slate-600 dark:text-slate-300">
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> AI Internship Completion (Acmegrade)</div>
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> Problem Solving (Intermediate) Certificate</div>
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> Python Essentials 1</div>
+            <div class="flex items-center gap-2"><i class="fa fa-check-circle text-green-500"></i> Data Visualization with Python</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE & EDUCATION -->
+    <section id="experience" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">04 · EXPERIENCE</div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Work History</h2>
+          
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">Project Intern</h3>
+              <span class="text-xs text-accent-blue font-mono">Aug 2024 - Oct 2024</span>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium mb-3">Acmegrade · Kanpur, UP</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Completed hands-on internship focusing on Artificial Intelligence project delivery and practical software implementations.
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">05 · EDUCATION</div>
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Academic Path</h2>
+          
+          <div class="glass-card rounded-2xl p-6 mb-4">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">B.Tech - Computer Science &amp; Engineering</h3>
+              <span class="text-xs text-accent-blue font-mono">2023 - 2027</span>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">Maharana Pratap Engineering College (MPEC), Kanpur</div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 mt-2">Specialization in Artificial Intelligence (CSE-AI)</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-bold text-slate-900 dark:text-white text-base">Intermediate (PCM with Computer Science)</h3>
+              <span class="text-xs text-slate-500 font-mono">Completed April 2022</span>
+            </div>
+            <div class="text-sm text-slate-500 dark:text-slate-400 font-medium">St. John's School BLW</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOMATED GITHUB PROJECTS -->
+    <section id="projects" class="max-w-6xl mx-auto px-6 lg:px-8 py-16 border-t border-black/5 dark:border-white/5">
+      <div class="mb-10 md:flex md:items-end md:justify-between gap-6">
+        <div>
+          <div class="text-xs uppercase tracking-[0.2em] text-accent-blue font-semibold mb-3">06 · FEATURED WORK</div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white tracking-tight">
+            Top open-source <span class="gradient-text">repositories</span>
+          </h2>
+        </div>
+        <div class="text-xs text-slate-500 font-mono mt-2 md:mt-0">
+          <i class="fa fa-refresh mr-1 text-accent-blue"></i> Auto-curated via GitHub API
+        </div>
+      </div>
+
+      <!-- Dynamic Projects Grid Container -->
+      <div id="projects-grid" class="grid md:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-6 animate-pulse h-48 border border-black/5 dark:border-white/5"></div>
+        <div class="glass-card rounded-2xl p-6 animate-pulse h-48 border border-black/5 dark:border-white/5"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION WITH FORMSPREE PIPELINE -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 lg:px-8 py-20 border-t border-black/5 dark:border-white/5">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 max-w-3xl mx-auto">
+        
+        <div class="text-center max-w-xl mx-auto mb-8">
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
+            Let's build something <span class="gradient-text">extraordinary</span>.
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm">
+            Varanasi, Uttar Pradesh, India | Phone: <a href="tel:+917393064211" class="text-accent-blue hover:underline font-mono">+91 7393064211</a>
+          </p>
+        </div>
+
+        <!-- SERVERLESS CONTACT FORM -->
+        <form id="contact-form" action="https://formspree.io/f/xwvgwnrg" method="POST" class="space-y-4 mb-8">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label for="form-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+              <input type="text" id="form-name" name="name" required placeholder="Recruiter / Hiring Manager" class="w-full text-xs px-4 py-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-accent-blue transition-colors">
+            </div>
+            <div>
+              <label for="form-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Email</label>
+              <input type="email" id="form-email" name="email" required placeholder="recruiter@company.com" class="w-full text-xs px-4 py-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-accent-blue transition-colors">
+            </div>
+          </div>
+
+          <div>
+            <label for="form-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Message</label>
+            <textarea id="form-message" name="message" rows="4" required placeholder="Hi Harshit, we are looking for a Software Engineer for our team..." class="w-full text-xs px-4 py-3 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-accent-blue transition-colors resize-none"></textarea>
+          </div>
+
+          <button type="submit" id="form-submit-btn" class="w-full py-3.5 rounded-xl font-medium text-sm bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white shadow-lg hover:opacity-95 transition-all flex items-center justify-center gap-2">
+            <i class="fa fa-paper-plane-o"></i> Send Message
+          </button>
+        </form>
+
+        <!-- Form Status Message Banner -->
+        <div id="form-status" class="hidden text-center text-xs p-3 rounded-xl border mb-6"></div>
+
+        <!-- QUICK CONNECT LINKS -->
+        <div class="border-t border-black/5 dark:border-white/5 pt-6 flex flex-wrap justify-center gap-3">
+          <a href="./Harshit_FullStack_Resume.pdf" download="Harshit_FullStack_Resume.pdf" class="px-4 py-2.5 rounded-xl font-medium text-xs bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 inline-flex items-center hover:border-blue-500/30">
+            <i class="fa fa-file-pdf-o mr-1.5 text-red-500"></i> Full-Stack Resume
+          </a>
+          <a href="./Harshit_Backend_Resume.pdf" download="Harshit_Backend_Resume.pdf" class="px-4 py-2.5 rounded-xl font-medium text-xs bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 inline-flex items-center hover:border-blue-500/30">
+            <i class="fa fa-file-pdf-o mr-1.5 text-red-500"></i> Backend Resume
+          </a>
+          <a href="tel:+917393064211" class="px-4 py-2.5 rounded-xl font-medium text-xs bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 inline-flex items-center">
+            <i class="fa fa-phone mr-1.5 text-green-500"></i> +91 7393064211
+          </a>
+          <a href="https://www.linkedin.com/in/harshit-singh-21jan2004" target="_blank" class="px-4 py-2.5 rounded-xl font-medium text-xs bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 inline-flex items-center">
+            <i class="fa fa-linkedin mr-1.5 text-blue-500"></i> LinkedIn
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <footer class="max-w-6xl mx-auto px-6 lg:px-8 py-10 border-t border-black/5 dark:border-white/5 text-xs text-slate-500 text-center">
+      © <span id="year"></span> Harshit Singh (Zukliod). All rights reserved.
+    </footer>
+  </main>
+</div>
+
+<!-- FLOATING AI RECRUITER CHATBOT WIDGET -->
+<div id="ai-chat-widget" class="fixed bottom-6 right-6 z-50">
+  <div id="chat-window" class="hidden w-80 sm:w-96 h-96 glass-card rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-black/10 dark:border-white/10 bg-slate-50/95 dark:bg-ink-950/95 mb-4 transition-all">
+    <div class="p-3.5 bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 text-white flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center font-bold text-xs">
+          <i class="fa fa-bot"></i> AI
+        </div>
+        <div>
+          <h4 class="text-xs font-bold leading-none">Harshit's Assistant</h4>
+          <span class="text-[10px] opacity-80 font-mono">Powered by Gemini</span>
+        </div>
+      </div>
+      <button id="close-chat-btn" class="text-white opacity-80 hover:opacity-100 text-sm p-1">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <div id="chat-messages" class="flex-1 p-3 overflow-y-auto space-y-2.5 text-xs text-slate-800 dark:text-slate-200">
+      <div class="bg-blue-500/10 dark:bg-white/5 p-2.5 rounded-xl max-w-[85%] border border-blue-500/10">
+        👋 Hi! I'm Harshit's AI representative. Ask me anything about his B.Tech CSE-AI degree at MPEC, internship experience at Acmegrade, or tech stack!
+      </div>
+    </div>
+
+    <form id="chat-form" class="p-2 border-t border-black/5 dark:border-white/5 flex gap-2">
+      <input id="chat-input" type="text" placeholder="Ask about Harshit's background..." required class="flex-1 text-xs px-3 py-2 rounded-xl bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-800 dark:text-slate-200 focus:outline-none focus:border-accent-blue" />
+      <button type="submit" class="px-3 py-2 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs font-semibold hover:opacity-90 transition-opacity">
+        <i class="fa fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+
+  <button id="toggle-chat-btn" aria-label="Open AI Assistant" class="w-13 h-13 p-3.5 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-cyan-400 text-white shadow-xl hover:scale-105 transition-all flex items-center justify-center">
+    <i class="fa fa-comments text-xl"></i>
+  </button>
+</div>
+
+<!-- SCRIPTS & CONTROLLERS -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const GITHUB_USERNAME = "zukliod";
+
+  // --- 1. DARK / LIGHT THEME TOGGLE CONTROLLER ---
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  const darkIcon = document.getElementById("theme-toggle-dark-icon");
+  const lightIcon = document.getElementById("theme-toggle-light-icon");
+
+  if (localStorage.getItem("color-theme") === "dark" || (!("color-theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.classList.add("dark");
+    lightIcon?.classList.remove("hidden");
+  } else {
+    document.documentElement.classList.remove("dark");
+    darkIcon?.classList.remove("hidden");
+  }
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", () => {
+      darkIcon?.classList.toggle("hidden");
+      lightIcon?.classList.toggle("hidden");
+
+      if (document.documentElement.classList.contains("dark")) {
+        document.documentElement.classList.remove("dark");
+        localStorage.setItem("color-theme", "light");
+      } else {
+        document.documentElement.classList.add("dark");
+        localStorage.setItem("color-theme", "dark");
+      }
+    });
+  }
+
+  // --- 2. RESUME DROPDOWN TOGGLE CONTROLLER ---
+  const resumeBtn = document.getElementById("resume-menu-btn");
+  const resumeDropdown = document.getElementById("resume-menu-dropdown");
+  const resumeArrow = document.getElementById("resume-arrow");
+
+  if (resumeBtn && resumeDropdown) {
+    resumeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isHidden = resumeDropdown.classList.contains("hidden");
+      if (isHidden) {
+        resumeDropdown.classList.remove("hidden");
+        resumeArrow?.classList.add("rotate-180");
+        resumeBtn.setAttribute("aria-expanded", "true");
+      } else {
+        resumeDropdown.classList.add("hidden");
+        resumeArrow?.classList.remove("rotate-180");
+        resumeBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!resumeBtn.contains(e.target) && !resumeDropdown.contains(e.target)) {
+        resumeDropdown.classList.add("hidden");
+        resumeArrow?.classList.remove("rotate-180");
+        resumeBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  // Helper fetch with timeout
+  async function fetchWithTimeout(url, options = {}) {
+    const { timeout = 8000 } = options;
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    try {
+      const response = await fetch(url, { ...options, signal: controller.signal });
+      clearTimeout(timeoutId);
+      return response;
+    } catch (error) {
+      clearTimeout(timeoutId);
+      throw error;
+    }
+  }
+
+  // --- 3. LEETCODE METRICS LOADER ---
+  async function loadLeetCodeMetrics() {
+    const statsEndpoint = `https://leetcode-api-faisalshohag.vercel.app/${GITHUB_USERNAME}`;
+
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.innerText = new Date().getFullYear();
+
+    try {
+      const statsResponse = await fetchWithTimeout(statsEndpoint, { timeout: 8000 });
+      if (statsResponse.ok) {
+        const statsData = await statsResponse.json();
+
+        const totalSolved = statsData.totalSolved ?? 0;
+        const easySolved = statsData.easySolved ?? 0;
+        const mediumSolved = statsData.mediumSolved ?? 0;
+        const hardSolved = statsData.hardSolved ?? 0;
+        const ranking = statsData.ranking ?? "N/A";
+
+        const totalEl = document.getElementById("total-solved");
+        const easyEl = document.getElementById("easy-count");
+        const mediumEl = document.getElementById("medium-count");
+        const hardEl = document.getElementById("hard-count");
+        const rankingEl = document.getElementById("contest-rating");
+
+        if (totalEl) totalEl.innerText = totalSolved.toLocaleString();
+        if (easyEl) easyEl.innerText = easySolved.toLocaleString();
+        if (mediumEl) mediumEl.innerText = mediumSolved.toLocaleString();
+        if (hardEl) hardEl.innerText = hardSolved.toLocaleString();
+        if (rankingEl) rankingEl.innerText = typeof ranking === 'number' ? `#${ranking.toLocaleString()}` : ranking;
+
+        const easyBar = document.getElementById("easy-bar");
+        const mediumBar = document.getElementById("medium-bar");
+        const hardBar = document.getElementById("hard-bar");
+
+        if (easyBar) easyBar.style.width = `${Math.min((easySolved / 250) * 100, 100)}%`;
+        if (mediumBar) mediumBar.style.width = `${Math.min((mediumSolved / 250) * 100, 100)}%`;
+        if (hardBar) hardBar.style.width = `${Math.min((hardSolved / 100) * 100, 100)}%`;
+      }
+    } catch (error) {
+      console.warn("[LeetCode Metrics] Retaining baseline UI values:", error);
+    }
+  }
+
+  // --- 4. OPTIMUM 3-TIER AUTOMATED GITHUB PROJECT CURATOR ---
+  async function loadGitHubProjects() {
+    const projectsContainer = document.getElementById("projects-grid");
+    if (!projectsContainer) return;
+
+    const EXCLUDED_PATTERNS = [
+      "leetcode", "dsa", "practice", "blog", "tutorial", "exercise", 
+      "assignment", "solution", "problem", "hacker-rank", "hackerrank",
+      "zukliod", "linkedin-synchronization", "leetcode-synchronization"
+    ];
+
+    const FLAGSHIP_KEYWORDS = [
+      "kesco", "kodekaleesh", "sports", "yantra", "ecoeducation", "sis"
+    ];
+
+    function calculateRecencyScore(updatedAtStr) {
+      if (!updatedAtStr) return 0;
+      const updatedDate = new Date(updatedAtStr);
+      const now = new Date();
+      const diffDays = Math.floor((now - updatedDate) / (1000 * 60 * 60 * 24));
+
+      if (diffDays <= 7) return 100;
+      if (diffDays <= 30) return 80;
+      if (diffDays <= 90) return 60;
+      if (diffDays <= 180) return 40;
+      if (diffDays <= 365) return 20;
+      return 5;
+    }
+
+    try {
+      const response = await fetchWithTimeout(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`, { timeout: 8000 });
+      if (!response.ok) throw new Error("GitHub API request failed");
+
+      const repos = await response.json();
+
+      const filtered = repos.filter(repo => {
+        const rawName = repo.name.toLowerCase();
+        const normalizedName = rawName.replace(/_/g, "-");
+        const topics = repo.topics || [];
+
+        if (repo.fork || repo.archived) return false;
+        if (EXCLUDED_PATTERNS.some(bad => normalizedName.includes(bad))) return false;
+
+        const isOptedIn = topics.includes("portfolio") || FLAGSHIP_KEYWORDS.some(key => normalizedName.includes(key));
+        const desc = (repo.description || "").toLowerCase();
+        const lang = (repo.language || "").toLowerCase();
+        const combinedText = `${normalizedName} ${desc} ${lang} ${topics.join(" ")}`;
+
+        if (!isOptedIn && !["mern", "react", "node", "python", "ai", "machine-learning"].some(k => combinedText.includes(k))) {
+          return false;
+        }
+
+        return true;
+      });
+
+      const scored = filtered.map(repo => {
+        const rawName = repo.name.toLowerCase();
+        const normalizedName = rawName.replace(/_/g, "-");
+        const desc = (repo.description || "").toLowerCase();
+        const lang = (repo.language || "").toLowerCase();
+        const topics = repo.topics || [];
+        const combinedText = `${normalizedName} ${desc} ${lang} ${topics.join(" ")}`;
+
+        const recencyScore = calculateRecencyScore(repo.updated_at);
+        let stackScore = 0;
+
+        if (topics.includes("portfolio")) stackScore += 200;
+
+        if (["mern", "react", "node", "express", "mongo", "prisma", "typescript", "full-stack"].some(term => combinedText.includes(term))) {
+          stackScore += 150;
+        }
+
+        if (["python", "ai", "machine-learning", "ml", "ocr", "nlp", "pandas"].some(term => combinedText.includes(term))) {
+          stackScore += 120;
+        }
+
+        if (repo.homepage) stackScore += 80;
+
+        const tractionScore = (repo.stargazers_count * 10) + (repo.forks_count * 5);
+        const finalScore = stackScore + recencyScore + tractionScore;
+
+        return { ...repo, score: finalScore };
+      });
+
+      const topProjects = scored.sort((a, b) => b.score - a.score).slice(0, 4);
+
+      if (topProjects.length > 0) {
+        renderProjects(topProjects, projectsContainer);
+        return;
+      }
+    } catch (error) {
+      console.warn("[GitHub Curator] Unable to load dynamic projects, rendering fallback:", error);
+    }
+
+    // Fallback UI rendering
+    const fallbackProjects = [
+      {
+        name: "KESCO Substation Information System",
+        description: "Enterprise Substation Information System for KESCO power discoms with RBAC, real-time asset dashboards, Excel imports, and automated reporting.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "TypeScript",
+        stargazers_count: 0,
+        topics: ["mern", "react", "nodejs", "typescript"]
+      },
+      {
+        name: "kodekaleesh-2025",
+        description: "AI-powered legal document verification & summary platform using Python, OCR, NLP, React, and Ethereum smart contract proof verification.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "Python",
+        stargazers_count: 0,
+        topics: ["python", "ai", "ocr", "react"]
+      },
+      {
+        name: "sports-event-management-system",
+        description: "Real-time Sports Event Management & Live Scoring System with Node.js, Express, Prisma ORM, Redis caching, and WebSocket updates.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "TypeScript",
+        stargazers_count: 0,
+        topics: ["nodejs", "express", "redis", "socket-io"]
+      },
+      {
+        name: "yantra-calculator",
+        description: "Interactive astronomical calculator and location optimizer for Samrat & Rama Yantras built with Node.js and modern JavaScript.",
+        html_url: `https://github.com/${GITHUB_USERNAME}`,
+        homepage: null,
+        language: "JavaScript",
+        stargazers_count: 0,
+        topics: ["nodejs", "algorithms", "astronomy"]
+      }
+    ];
+
+    renderProjects(fallbackProjects, projectsContainer);
+  }
+
+  function renderProjects(projects, container) {
+    container.innerHTML = projects.map(repo => {
+      const lang = repo.language || "Full-Stack";
+      const stars = repo.stargazers_count || 0;
+      const desc = repo.description || "Software development application.";
+      const truncatedDesc = desc.length > 110 ? desc.substring(0, 110) + "..." : desc;
+
+      const topicsHtml = (repo.topics || []).slice(0, 3).map(topic => 
+        `<span class="text-[10px] px-2 py-0.5 rounded bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-slate-700 dark:text-slate-300 font-mono">${topic}</span>`
+      ).join("");
+
+      return `
+        <div class="glass-card rounded-2xl p-6 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <i class="fa fa-folder-o text-accent-blue text-lg"></i>
+                <h3 class="font-bold text-slate-900 dark:text-white text-lg tracking-tight">${repo.name}</h3>
+              </div>
+              <div class="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+                ${stars > 0 ? `<span><i class="fa fa-star text-yellow-400 mr-1"></i>${stars}</span>` : ''}
+                <span class="px-2 py-0.5 rounded-full bg-blue-500/10 text-accent-blue font-semibold border border-blue-500/20 text-[10px]">${lang}</span>
+              </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">${truncatedDesc}</p>
+          </div>
+
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              ${topicsHtml}
+            </div>
+            <div class="flex items-center justify-between border-t border-black/5 dark:border-white/5 pt-3 mt-auto">
+              <a href="${repo.html_url}" target="_blank" rel="noopener" class="text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white flex items-center gap-1 transition-colors">
+                <i class="fa fa-github opacity-80"></i> Source Code
+              </a>
+              ${repo.homepage ? `
+                <a href="${repo.homepage}" target="_blank" rel="noopener" class="text-xs font-medium text-accent-blue hover:underline flex items-center gap-1">
+                  Live Demo <i class="fa fa-external-link text-[10px]"></i>
+                </a>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // --- 5. AI RECRUITER CHATBOT CONTROLLER ---
+  const toggleChatBtn = document.getElementById("toggle-chat-btn");
+  const closeChatBtn = document.getElementById("close-chat-btn");
+  const chatWindow = document.getElementById("chat-window");
+  const chatForm = document.getElementById("chat-form");
+  const chatInput = document.getElementById("chat-input");
+  const chatMessages = document.getElementById("chat-messages");
+
+  if (toggleChatBtn && chatWindow) {
+    toggleChatBtn.addEventListener("click", () => chatWindow.classList.toggle("hidden"));
+    closeChatBtn?.addEventListener("click", () => chatWindow.classList.add("hidden"));
+
+    chatForm?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const userText = chatInput.value.trim();
+      if (!userText) return;
+
+      chatMessages.innerHTML += `
+        <div class="ml-auto bg-blue-600 text-white p-2.5 rounded-xl max-w-[85%] text-right">
+          ${userText}
+        </div>
+      `;
+      chatInput.value = "";
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      const loadingId = "loading-" + Date.now();
+      chatMessages.innerHTML += `
+        <div id="${loadingId}" class="bg-blue-500/10 dark:bg-white/5 p-2.5 rounded-xl max-w-[85%] border border-blue-500/10 text-slate-500 italic">
+          Thinking...
+        </div>
+      `;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      try {
+        const systemPrompt = `You are the AI career assistant representing Harshit Singh (Zukliod). 
+        Profile Context:
+        - B.Tech in CSE with specialization in Artificial Intelligence at Maharana Pratap Engineering College (MPEC), Kanpur (2023-2027).
+        - Completed 3-month Project Internship in Artificial Intelligence at Acmegrade (Aug-Oct 2024).
+        - Skills: Python, Problem Solving (Intermediate), Web Development, UiPath (RPA), Data Visualization.
+        - Location: Varanasi, UP, India. Email: rarchit101@gmail.com, Phone: +91 7393064211.
+        
+        Answer professionally and concisely (under 60 words). Be helpful to recruiters.
+        Question: ${userText}`;
+
+        const activeKey = window.GEMINI_API_KEY || "";
+        
+        if (!activeKey) {
+          throw new Error("Client API key not configured");
+        }
+
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${activeKey}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ contents: [{ parts: [{ text: systemPrompt }] }] })
+        });
+
+        const data = await response.json();
+        const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Harshit is available for software engineering roles! Feel free to reach out via email or phone.";
+
+        document.getElementById(loadingId)?.remove();
+        chatMessages.innerHTML += `
+          <div class="bg-blue-500/10 dark:bg-white/5 p-2.5 rounded-xl max-w-[85%] border border-blue-500/10">
+            ${aiReply}
+          </div>
+        `;
+      } catch (err) {
+        document.getElementById(loadingId)?.remove();
+        chatMessages.innerHTML += `
+          <div class="bg-blue-500/10 dark:bg-white/5 p-2.5 rounded-xl max-w-[85%] border border-blue-500/10 text-slate-400">
+            Harshit is available for Software Engineering & AI roles! Contact him directly at <a href="mailto:rarchit101@gmail.com" class="text-accent-blue underline">rarchit101@gmail.com</a> or <a href="tel:+917393064211" class="text-accent-blue font-mono">+91 7393064211</a>.
+          </div>
+        `;
+      }
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    });
+  }
+
+  // --- 6. ASYNCHRONOUS CONTACT FORM HANDLER ---
+  const contactForm = document.getElementById("contact-form");
+  const formStatus = document.getElementById("form-status");
+  const formSubmitBtn = document.getElementById("form-submit-btn");
+
+  if (contactForm) {
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      formSubmitBtn.disabled = true;
+      formSubmitBtn.innerHTML = `<i class="fa fa-spinner fa-spin"></i> Sending...`;
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+          formStatus.className = "text-center text-xs p-3 rounded-xl border border-green-500/20 bg-green-500/10 text-green-500 mb-6";
+          formStatus.innerText = "✓ Message sent successfully! I will get back to you shortly.";
+          contactForm.reset();
+        } else {
+          throw new Error("Form submission failed");
+        }
+      } catch (err) {
+        formStatus.className = "text-center text-xs p-3 rounded-xl border border-red-500/20 bg-red-500/10 text-red-500 mb-6";
+        formStatus.innerText = "⚠️ Something went wrong. Please email directly at rarchit101@gmail.com";
+      } finally {
+        formStatus.classList.remove("hidden");
+        formSubmitBtn.disabled = false;
+        formSubmitBtn.innerHTML = `<i class="fa fa-paper-plane-o"></i> Send Message`;
+      }
+    });
+  }
+
+  // --- 7. DYNAMIC PDF CACHE BUSTER ---
+  document.querySelectorAll('a[href$=".pdf"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const baseUrl = link.getAttribute('href').split('?')[0];
+      link.setAttribute('href', `${baseUrl}?v=${Date.now()}`);
+    });
+  });
+
+  loadLeetCodeMetrics();
+  loadGitHubProjects();
+});
+</script>
+</body>
+</html>
